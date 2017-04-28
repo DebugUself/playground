@@ -1,0 +1,78 @@
+## 问题
+- 大妈在[72h[TASK]重构异常仓库<--[WIKI]合理迁入实验指南 ](https://github.com/DebugUself/du4proto/issues/23)说我的134_career 是完全分支.
+- 完全分支 300commit 对比其他分支 4 commit
+## 分析
+猜测: 不能从 master 直接建立分支, 要开一个空白的分支
+查询: google: 空白分支
+前两个博客给出: $ git checkout orphan
+google: git checkout orphan
+stackoverflow(SOF):
+
+>The core use for git checkout --orphan is to reach a git init-like situation on a non-new repository.
+
+>Without this ability, all of your git branches would have a common ancestor, your initial commit. This is a common case, but in no way the only one. For example, git allows you to track multiple independent projects as different branches in a single repository.
+
+>That's why your files are being reported as “changes to be committed”: in a git init state, the first commit isn't created yet, so all files are new to git.
+
+SOF related question:
+[How do I create a commit without a parent in Git? - Stack Overflow](http://stackoverflow.com/questions/5689960/how-do-i-create-a-commit-without-a-parent-in-git)
+[In git, is there a simple way of introducing an unrelated branch to a repository? - Stack Overflow](http://stackoverflow.com/questions/1384325/in-git-is-there-a-simple-way-of-introducing-an-unrelated-branch-to-a-repository)
+官方文档: [Git - git-checkout Documentation](https://git-scm.com/docs/git-checkout)
+
+## 实验:
+- 环境: 我自己的公开仓库 BP_github
+- 操作:
+- 本地
+`$ git checkout --orphan newbranch`
+Switched to a new branch 'newbranch'
+`$ ls`
+README.md   _drafts     最小故事.md
+`$ git rm -rf .`
+rm '.Ulysses-Group.plist'
+rm '.Ulysses-favorites.plist'
+rm 'README.md'
+rm '_drafts/.Ulysses-Group.plist'
+rm '_drafts/progress.md'
+rm '_drafts/team.md'
+rm '_drafts/初级故事.md'
+rm '_drafts/学习者都该知道的终极方法.md'
+rm '最小故事.md'
+`$ git add .`
+`$ git commit -m 'Initial commit'`
+[newbranch (root-commit) 432e838] Initial commit
+ 2 files changed, 108 insertions(+)
+ create mode 100644 .Ulysses-Group.plist
+ create mode 100644 .Ulysses-favorites.plist
+`$ git status`
+On branch newbranch
+nothing to commit, working tree clean
+`$ git push --set-upstream origin newbranch`
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 880 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/13416136446/BP_Github.git
+ * [new branch]      newbranch -> newbranch
+Branch newbranch set up to track remote branch newbranch from origin.
+
+- 结果:
+github 中 BP_github 
+master 分支 2 commit
+newbranch 分支 1 commit
+
+## 拟行动
+- 本地和远程仓库 删掉现有的branch 134_career (删之前备份)
+- 本地 du4proto 仓库中
+`$ git checkout --orphan 134_career`
+`$ git rm -rf .`
+`$ git add .`
+`$ git commit -m 'Initial commit'`
+`$ git push --set-upstream origin 134_career`
+- 新建分支后, 将原来的文件移进去.
+
+
+
+***
+我这样是对的么? 如果可以, 我会在24h 按以上操作.
