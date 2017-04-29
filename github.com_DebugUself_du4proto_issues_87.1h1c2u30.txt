@@ -20,23 +20,46 @@ SOF related question:
 官方文档: [Git - git-checkout Documentation](https://git-scm.com/docs/git-checkout)
 
 ## 实验:
-- 环境: 我自己的公开仓库 BP_github
+- 环境: [DebugUself/playground: playground for DUr try all kinds of git actions](https://github.com/DebugUself/playground)
 - 操作:
-- 本地
-`$ git checkout --orphan newbranch`
+1新建一个完全分支 - 2删除这个分支 - 3新建一个空白分支 
+
+1. 新建一个完全分支(重现错误)
+`$ git checkout -b newbranch`
+`$ git push`
+2. 删除这个分支
+- 删除远程分支(未合并过的)
+`$ git push origin --delete newbranch`
+- 删除本地分支
+`$ git checkout master`
+`$ git branch -D newbranch`
+
+查看一下有无**额外分支历史**
+`$ git show-branch --all`
+
+>! [master] Initial commit
+> * [134_career] add txt
+>  ! [origin/134_career] add txt
+>   ! [origin/HEAD] Initial commit
+>    ! [origin/master] Initial commit
+>     ! [origin/play] test
+>------
+> *+    [134_career] add txt
+>     + [origin/play] test
+>     + [origin/play^] ignore .DS_Store
+>     + [origin/play~2] play
+>+  +++ [master] Initial commit
+
+答案是没有
+
+- 新建一个空白分支
+`$ git checkout --orphan career`
 Switched to a new branch 'newbranch'
 `$ ls`
 README.md   _drafts     最小故事.md
 `$ git rm -rf .`
-rm '.Ulysses-Group.plist'
-rm '.Ulysses-favorites.plist'
-rm 'README.md'
-rm '_drafts/.Ulysses-Group.plist'
-rm '_drafts/progress.md'
-rm '_drafts/team.md'
-rm '_drafts/初级故事.md'
-rm '_drafts/学习者都该知道的终极方法.md'
-rm '最小故事.md'
+rm 'readme.md'
+
 `$ git add .`
 `$ git commit -m 'Initial commit'`
 [newbranch (root-commit) 432e838] Initial commit
@@ -46,16 +69,15 @@ rm '最小故事.md'
 `$ git status`
 On branch newbranch
 nothing to commit, working tree clean
-`$ git push --set-upstream origin newbranch`
-Counting objects: 4, done.
+`$ git push --set-upstream origin 134_career`
+Counting objects: 3, done.
 Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 880 bytes | 0 bytes/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), done.
-To https://github.com/13416136446/BP_Github.git
- * [new branch]      newbranch -> newbranch
-Branch newbranch set up to track remote branch newbranch from origin.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.88 KiB | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/DebugUself/playground.git
+ * [new branch]      134_career -> 134_career
+Branch 134_career set up to track remote branch 134_career from origin.
 
 - 结果:
 github 中 BP_github 
@@ -64,6 +86,11 @@ newbranch 分支 1 commit
 
 ## 拟行动
 - 本地和远程仓库 删掉现有的branch 134_career (删之前备份)
+    + 删除远程分支(未合并过的)
+    `$ git push origin --delete newbranch`
+    + 删除本地分支
+    `$ git checkout master`
+    `$ git branch -D newbranch`
 - 本地 du4proto 仓库中
 `$ git checkout --orphan 134_career`
 `$ git rm -rf .`
