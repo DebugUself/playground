@@ -1,0 +1,58 @@
+issue:血案之float的11.100000000000001
+
+# 背景
+
+<--由issue[[ASK]如何实现aTimelog每日活动类别时间相加？ · Issue #105 · DebugUself/du4proto](https://github.com/DebugUself/du4proto/issues/105) 引发
+
+//csv文件为
+```
+家务,4.3,06/01 20:20,06/02 00:40,
+家务,5.0,06/01 11:39,06/01 16:41,
+家务,1.8,06/01 07:39,06/01 09:25,
+
+```
+
+//期望计算下面几个值的总和
+图片
+
+# 尝试
+
+//思路：csv处理为list, for循环读取list元素为string, 把string转为float, float相加求得总和
+//代码如下
+```
+# -*- coding: utf-8 -*-
+
+file = open('0601a.csv', 'r')
+data1 = []
+data2 = []
+sum0 = 0
+for line in file.readlines():
+    line = line.strip('\n')
+    line = line.split(',')
+    print(line)
+    iterm1 = line.pop(0)
+    iterm2 = line.pop(0)
+    print(iterm1)
+    print(iterm2)
+    iterm2_float = float(iterm2)
+    sum0 = sum0 + iterm2_float
+    print(sum0)
+
+print(sum0)
+    
+file.close()
+```
+
+# 问题
+//该问题实质是计算`4.3 + 5.0 + 1.8`的总和
+//手动计算答案应该是`4.3 + 5.0 + 1.8 = 11.1`
+//可是终端返回结果却是
+```
+(venv) zsydeMacBook-Air:py zsy$ python3 9list_pop.py
+4.3
+9.3
+11.100000000000001
+11.100000000000001
+```
+
+**每个数字都转换为float格式, 并存储在变量iterm2_float中，按照sum0 = sum0 + iterm2_float的公式，理应算得4.3 + 5.0 + 1.8 = 11.1，而终端返回结果却是，11.0000000001。这是为啥？**
