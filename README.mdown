@@ -1,0 +1,19 @@
+# s03e51_atl4Uself小队召唤
+
+## 背景
+zq在[du4proto/README.md](https://github.com/DebugUself/du4proto/blob/master/S03E51/README.md)中, 提议团队化自己的学习计划
+要求:自主组建最小2人,最多5人的内部团队
+
+## atl4Uself小队学习计划
+学习方法:从下到上
+- 什么是从下到上？参见zq推荐的 [Two Approaches to Learning Programming: Top-Down and Bottom-Up - Programming for Beginners](http://www.programmingforbeginnersbook.com/blog/top-down-bottom-up-approaches-to-learning-programming/?utm_source=wanqu.co&utm_campaign=Wanqu+Daily&utm_medium=ios)
+
+学习对象:`pandas基础`
+ - 使用zq推荐的[donnemartin/data-science-ipython-notebooks: pandas](https://github.com/donnemartin/data-science-ipython-notebooks)
+
+学习协同:周上传ipynb+周会报告
+- 上传至分支atl4u
+
+## atl4Uself小队学习成果
+- ipynb
+- 运用pandas基础技能设计`分析自己时间账单的作品1个`
