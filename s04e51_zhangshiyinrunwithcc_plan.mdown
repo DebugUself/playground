@@ -1,0 +1,51 @@
+# s04e51熊本Plan: atl4u
+
+----
+release 0.2 datetime 20170707 
+
+## 1.为什么写好几个version的plan?
+不同version的plan源于我对demo的感知
+每当做1个demo时候才发现过去的plan 幼稚/简单化
+而只有当费尽十几个小时做完demo才可能发现上一个version plan里的幼稚之处
+version的迭代反映的是我对于自己作品感知的加深
+
+### 1.1 难点
+难点指, 目前我的能力无法快速突破的功能
+这些难点工程量大, 耗费我的信心/精力/时间过多
+在s04e51应尽量避免, 日后再战
+
+1.1.1 clean_data
+
+- 去除csv重复记录/多余内容
+- 活动类别合并
+- 日期/持续时间统一口径, 用unix秒数换算
+
+1.1.2 bokeh_d3.js
+
+- ggplot虽然上手简单, 但不容易在web上应用
+- bokeh使用于web, 但情况不清楚
+
+### 1.2 重点
+重点是s04e51必须要实现的功能
+
+1.2.1 pandas的dataframe可以做行运算吗？
+1.2.2 dataframe的index用 datetime还是用活动类别？
+
+---
+release 0.1 datetime 20170703 
+
+## 1. 问题
+1. 如何制作可用的
+2. 如何制作有趣的
+
+## 2. 行动
+
+- [ ] du13w [可用的] 用pandas/ggplot完成1周熊本时间账单 数据计算/可视化, 并评选1周bestday, 并书写README.md
+- [ ] du14w [可用的] 用csv读取方式完成数据导入1个月的数据
+- [ ] du15w [有趣的] 用bestday为x轴, 日期为y轴, 评选1月的bestday是哪几天
+- [ ] du16w [有趣的] 用Bokeh实验可视化
+
+## 3. 经验教训
+
+## 4. 成果地址
+[DebugUself/playground at atl4u](https://github.com/DebugUself/playground/tree/atl4u)

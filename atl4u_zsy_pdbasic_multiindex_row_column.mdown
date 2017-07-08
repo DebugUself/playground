@@ -1,0 +1,49 @@
+# pdbasic: MultiIndex的行与列
+
+## 期望
+- 5*8 矩阵的数据, 每个数据有2个属性
+  + 属性1: ['A', 'B']
+  + 属性2: ['py', 'ce', 'gf', 'rd']
+- 计算'py', 'ce', 'gf', 'rd'4个大类别平均值
+- 计算('py', 'A'), ('py', 'B')8个小类别平均值
+
+## 参考资料
+- PDSH: python data science handbook
+
+## 步骤调试
+- 给行赋予MultiIndex
+
+```
+index = [('0py', 'A'), ('0py', 'B'),
+         ('1ce', 'A'), ('1ce', 'B'),
+         ('2rd', 'A'), ('2rd', 'B'),
+         ('3gf', 'A'), ('3gf', 'B')]
+data1 = np.random.rand(8)
+data1 = pd.Series(data1, index=index)
+# data1到data5都是类似代码
+df = pd.DataFrame({'Mon': data1,
+                   'Tue': data2,
+                   'Wed': data3,
+                   'Thu': data4,
+                   'Fri': data5})
+```
+  
+> 风险: 不能用`行`进行计算
+
+- 给列赋予MultiIndex 
+
+```
+columns = pd.MultiIndex.from_product(
+    [['0py', '1ce', '2rd', '3gf'], ['A', 'B']], 
+    names=['subject', 'type'])
+data = np.round(np.random.randn(5, 8), 1)
+df = pd.DataFrame(data, index=index, columns=columns)
+```
+
+## 经验
+- pd的行与列都可以做MI(MultiIndex)
+- 但行做MI不方便运算
+- 推荐用列做MI, 方便运算
+
+## timelog
+2hr 20170703 Mon
