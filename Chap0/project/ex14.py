@@ -1,29 +1,29 @@
 # -*- coding:utf-8 -*-
 
-# BE 00
+# BE 00pt
 
 from sys import argv
 
 script,user_name,user_key = argv
 prompt = '$'
 
-print "Hi %s, I'm the %s script." % (user_name,script)
-print "your key is %s" % user_key
-print "I'd like to ask you a few questions."
-print "Do you like me %s?" % user_name
-likes = raw_input(prompt)
+print("Hi %s, I'm the %s script." % (user_name,script))
+print("your key is %s" % user_key)
+print("I'd like to ask you a few questions.")
+print("Do you like me %s?" % user_name)
+likes = input(prompt)
 
-print "Where do you live %s?" % user_name
-lives = raw_input(prompt)
+print("Where do you live %s?" % user_name)
+lives = input(prompt)
 
-print "What kind of computor do you have?"
-computor = raw_input(prompt)
+print("What kind of computor do you have?")
+computor = input(prompt)
 
-print"""
+print("""
 Alright,so you said %r about liking me.
 You live in %r. Not sure where that is.
 And you have a %r computor. Nice.
-""" % (likes,lives,computor)
+""" % (likes,lives,computor))
 
 # DK
 # 01 玩 Zork Adventure 文字游戏

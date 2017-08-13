@@ -9,18 +9,18 @@
 def while_loop(maximum,increment):
     i = 0
     while i < maximum:
-        print("At the top i  is %d " % i)
+        print "At the top i  is %d " % i
         numbers.append(i)
 
         i += increment
-        print("numbers now:",numbers)
-        print("At the bottom i is %d" % i)
+        print "numbers now:",numbers
+        print "At the bottom i is %d" % i
 
 def for_range_loop(maximum,increment):
     for i in range(maximum):
-        print(" i  is %d " % i)
+        print " i  is %d " % i
         numbers.append(i)
-        print("numbers now:",numbers)
+        print "numbers now:",numbers
 
 
 
@@ -31,10 +31,10 @@ if __name__ == '__main__':
 
     #while_loop(maximum,increment)
     for_range_loop(maximum,increment)
-    print("The numbers:")
+    print "The numbers:"
 
     for num in numbers:
-        print(num)
+        print num
 
 #DK
 # 01 将循环改成一个函数

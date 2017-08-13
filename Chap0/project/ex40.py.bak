@@ -9,13 +9,13 @@ class Song(object):
     def __init__(self,lyrics,author):
         self.lyrics = lyrics
         self.author = author
-        print(author)
+        print author
     
     def sing_me_a_song(self):
         for line in self.lyrics:
-            print(line)
+            print line
 
-        print(self.author)
+        print self.author
 
 
 happy_bday = Song(["Happy borthday to you",
