@@ -6,7 +6,7 @@
 ## Basic Tasks
 
 - [x] 1. PY3 改写 7+ LPTHW ex
-- [ ] 2. Anaconda & Jupyter Notebook 
+- [x] 2. Anaconda & Jupyter Notebook 
 - [ ] 3. 结合代码示范的基础概念教程
     - 优先示范自己最难理解的 1-3 个基础概念
         - 数据类型
@@ -18,11 +18,11 @@
 
 ## Advanced Tasks     
 
-- [ ] 1. 猜数字小游戏
+- [x] 1. 猜数字小游戏
     - 程序随机生成一个 20 以内的数字，用户有 10 次机会猜测
     - 程序根据用户输入，给予一定提示（大了、小了、正确）
     - 猜对或用完 10 次机会，游戏结束 
-- [ ] 2. 猜数字小游戏(进阶版)
+- [x] 2. 猜数字小游戏(进阶版)
     - 程序内部用 0-9 生成一个 4 位数，每个数位上的数字不重复，且首位数字不为零，如 1942
     - 用户输入 4 位数进行猜测，程序返回相应提示
     - 用 A 表示数字和位置都正确，用 B 表示数字正确但位置错误
@@ -37,7 +37,6 @@
     - [Cheat Sheet: Writing Python 2-3 compatible code](http://python-future.org/compatible_idioms.html)
 2.  Anaconda & Jupyter Notebook 
     - 小提示：推荐使用 Anaconda（Download Anaconda Now! | Continuum）套件安装 Python3 ，简捷省事，且附带 Jupyter Notebook（课程推荐的笔记工具，后面的卡片会介绍）。
-    - 
 
 3. Basic Concepts
     - [如何掌握所有的程序语言](http://www.yinwang.org/blog-cn/2017/07/06/master-pl) 
