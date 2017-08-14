@@ -6,7 +6,7 @@
 ## Basic Tasks
 
 - [x] 1. PY3 改写 7+ LPTHW ex
-- [ ] 2. Jupyter Notebook 安装
+- [ ] 2. Anaconda & Jupyter Notebook 
 - [ ] 3. 结合代码示范的基础概念教程
     - 优先示范自己最难理解的 1-3 个基础概念
         - 数据类型
@@ -35,7 +35,9 @@
 1. py3 & py2
     - [py3in1pic.jpg)](http://openmindclub.qiniucdn.com/res/map/py3in1pic.jpg)
     - [Cheat Sheet: Writing Python 2-3 compatible code](http://python-future.org/compatible_idioms.html)
-2. JN
+2.  Anaconda & Jupyter Notebook 
+    - 小提示：推荐使用 Anaconda（Download Anaconda Now! | Continuum）套件安装 Python3 ，简捷省事，且附带 Jupyter Notebook（课程推荐的笔记工具，后面的卡片会介绍）。
+    - 
 
 3. Basic Concepts
     - [如何掌握所有的程序语言](http://www.yinwang.org/blog-cn/2017/07/06/master-pl) 
