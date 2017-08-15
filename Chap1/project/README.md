@@ -4,13 +4,13 @@
 
 ## Require
 
-    - Python 3.6.0
+- Python 3.6.0
 
 ## Feature
 
-    - 输入中文城市名，返回该城市的天气数据;
-    - 输入指令 h or help，打印帮助文档;
-    - 输入指令 q or quit ，退出程序的交互; 
+- 输入中文城市名，返回该城市的天气数据;
+- 输入指令 h or help，打印帮助文档;
+- 输入指令 q or quit ，退出程序的交互; 
 
 ## Steps
 
