@@ -66,6 +66,14 @@
             --------- +
 
 
+## Using
+
+- 下载 [weather_query.py](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/weather_query.py)
+- 在命令行中 cd 到 文件所在目录层级
+- 在命令行中输入
+   - python weather_query.py
+- 跟随提示操作即可
+
 ## Note&Record
 
 - [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/CH1_WeatherInquiry_ExploringRecord.ipynb)
