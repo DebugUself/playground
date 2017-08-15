@@ -20,14 +20,14 @@
     - [x] 0.2 读取文件内容
         - f.read()
         - f.readline()     
-    - [x]0.3 将文件内容转化成字典
+    - [x] 0.3 将文件内容转化成字典
         - str => list => dict
         - 0.3.1 将一行信息转化成字典
             - split()
             - d[k]= v
         - 0.3.2 将整个文本信息转化成字典
             - for line in weather_file:
-    - [x]0.4 查询互动与字典操作
+    - [x] 0.4 查询互动与字典操作
             - input()
             - [(k,v)]= d.items()
             - v = d.get(k)
