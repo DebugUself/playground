@@ -76,4 +76,4 @@
 
 ## Note&Record
 
-- [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/CH1_WeatherInquiry_ExploringRecord.ipynb)
+- [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)
