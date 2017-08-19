@@ -10,7 +10,7 @@
 
 - 输入中文城市名，返回该城市的天气数据;
 - 输入指令 h or help，打印帮助文档;
-- 输入指令 q or quit ，退出程序的交互; 
+- 输入指令 q or quit ，退出程序的交互;
 
 ## Steps
 
@@ -19,7 +19,7 @@
         - with open("<filename>") as f:
     - [x] 0.2 读取文件内容
         - f.read()
-        - f.readline()     
+        - f.readline()
     - [x] 0.3 将文件内容转化成字典
         - str => list => dict
         - 0.3.1 将一行信息转化成字典
@@ -28,9 +28,9 @@
         - 0.3.2 将整个文本信息转化成字典
             - for line in weather_file:
     - [x] 0.4 查询互动与字典操作
-            - input()
-            - [(k,v)]= d.items()
-            - v = d.get(k)
+        - input()
+        - [(k,v)]= d.items()
+        - v = d.get(k)
 - [x] 1.帮助函数 help()
 - [x] 2.退出函数 quit()
     - 2.1 输出的查询历史由字典换成文字
@@ -45,13 +45,13 @@
                       ^                                                                                   |
             (print)   ^                                                                                   |-> "user quiry history"   +->"help info"
                       ^                                                                                   |                          |
-            (out)     ^              +->weather_dict ----------+  +->city_weather,user_quiry_dict -----+  +                          |
+            (out)     ^              +->weather_dict ----------+  +->city_weather,history_list --------+  +                          |
                       ^              |                         |  |                                    |  |                          |
             [function]^  main()   +->file_deal()               |  weather_query()                      |  quit()                     help()
                       ^   |       |  |                         |  |                                    |  |                          |
-            (in)      ^   |       |  +<-filename,weather_dict  |  +<-weather_dict,city,user_quiry_dict |  +<-(user_quiry_dict)       +
+            (in)      ^   |       |  +<-filename,weather_dict  |  +<-weather_dict,city,history_list    |  +<- history_list           +
                       ^   |       |     ^        ^             |     ^            ^    ^               |  |   ^                      |
-                      ^   |       |     |        |             +-----+            |    |               +--|---+                      |    
+                      ^   |       |     |        |             +-----+            |    |               +--|---+                      |
                       ^   |       |     |        |                                |    |                  |                          |
             (judge)   ^   |       |     |        |                              ?city  |              ?q or quit                ?h or help  ?wrong -> +
                       ^   |       |     |        |                                ^    |                  ^                          ^          ^     |
@@ -77,3 +77,35 @@
 ## Note&Record
 
 - [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)
+
+## Update
+
+### v1.1
+
+- [x] Bug:[重复查询的记录无法添加至历史记录](https://github.com/NBR-hugh/Py101-004/commit/ed73eb2a46d0066b7fb8fbea4058856d269f12c9##commitcomment-23712721)
+    - 原因:数据类型的特点导致,字典中相同的 iterm 只会存储一次
+    - 措施:将存放历史信息的数据类型由 dict 转变为 list
+- [x] Pithy:阅读学友代码,发现判断形式更简短的表达方式
+    - ` if commond == 'h' or commond == 'help':`
+    - => `if commond in ['h','help']:`
+    - `elif commond == 'q' or commond == 'quit':`
+    - => `elif commond in ['q','quit']:`
+- [ ] Optimization:真正提升性能节省内存的代码
+    - 触发: [Scotting](https://github.com/AIHackers/Py101-004/issues/42#issuecomment-322388219)
+    - 探索记录:在[WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)中更新
+    - keypoint
+       - 标准库 csv
+            - [x]定义,功能
+            - [x]示例代码解读
+            - [x]参数含义
+            - [x]reader() 与 writer() 用法
+            - [x]与 file.read 的比较(参考@ Xiami)
+        - collection
+            - [x]定义,功能
+            - [x]示例代码解读
+            - [x]主要用法
+            - [?]对读写的应用
+        - python 性能判定
+            - [ ]程序性能有哪些判断指标?
+            - [ ]判断方法?
+            - [ ]优化方法?

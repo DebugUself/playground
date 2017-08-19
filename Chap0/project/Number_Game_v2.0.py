@@ -4,17 +4,15 @@ from sys import exit
 
 # 生成4位随机数列(可能首位为0)
 def random_list_build():
-    number_set = [0,1,2,3,4,5,6,7,8,9]
     random_list = []
-    random_list = random.sample(number_set,4)
+    random_list = random.sample(range(10),4)
     return random_list
 
 # 修正首位为0的随机数列
 def random_list_check(random_list):
 
     if random_list[0] == 0:
-        number_set = [1,2,3,5,6,6,7,8,9]
-        random_list = random.sample(number_set,4)
+        random_list = random.sample(range(1,10),4)
         print("随机数列满足要求!生成成功!")
     else:
         print("随机数列满足要求!生成成功!")
@@ -45,14 +43,14 @@ def input_number_deal():
     input_strlist = list(input_str)
     input_number = int(input_str)
     input_list = list(map(int, input_strlist))
-    print(input_list)
+
 
     return input_list
 
 
 # 比较 随机数列 与 输入数列,给出 AB 结果,当 4A 时退出游戏.
 def compare(random_list,input_list):
-    print (random_list,input_list)
+
     A_count = 0
     B_count = 0
     
@@ -123,5 +121,5 @@ if __name__ == '__main__':
     #input_number_deal()
 
 
-
+name
 
