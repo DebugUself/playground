@@ -90,7 +90,7 @@
     - => `if commond in ['h','help']:`
     - `elif commond == 'q' or commond == 'quit':`
     - => `elif commond in ['q','quit']:`
-- [ ] Optimization:真正提升性能节省内存的代码
+- [?] Optimization:真正提升性能节省内存的代码
     - 触发: [Scotting](https://github.com/AIHackers/Py101-004/issues/42#issuecomment-322388219)
     - 探索记录:在[WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)中更新
     - keypoint
@@ -105,7 +105,21 @@
             - [x]示例代码解读
             - [x]主要用法
             - [?]对读写的应用
-        - python 性能判定
+        - [扩展]python 性能判定
             - [ ]程序性能有哪些判断指标?
             - [ ]判断方法?
             - [ ]优化方法?
+- [ ] Optimization: @thxiami 的亮点&Review
+    - 触发:[亮点](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323538602) | [code review](https://github.com/NBR-hugh/Py101-004/commit/455e936cee237a3f688cf6289a8d3179b27c46a7##commitcomment-23744561)
+    - 探索记录:在[WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)中更新
+    - [x]  增加脚本开头的说明
+    - [x]  给输入加一个异常判断呢？试着输入：windows：CTRL + Z / mac：Control + D
+    - [x]  ` elif commond in weather_dict.keys():`
+        - => `elif commond in weather_dict`
+    - [x]  `elif commond in weather_dict.keys():`
+        - => `elif weather_dict.get(commond, None)`
+            - 更高效，使用键来找对应的key，而非遍历
+    - [x]  修改 command
+    - [ ]  字典调用函数
+    - [ ]  class 封装用户信息
+
