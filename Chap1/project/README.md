@@ -120,6 +120,6 @@
         - => `elif weather_dict.get(commond, None)`
             - 更高效，使用键来找对应的key，而非遍历
     - [x]  修改 command
-    - [ ]  字典调用函数
+    - [ ]  利用字典调用函数
     - [ ]  class 封装用户信息
 

@@ -96,7 +96,7 @@ def main():
             help()
         elif command in ('q', 'quit'):
             quit(history_list)
-        elif command in weather_dict:
+        elif weather_dict.get(command, None):
             city = command
             weather_query(city,weather_dict,history_list)
         else:
