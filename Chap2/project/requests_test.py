@@ -4,36 +4,52 @@
 
 import requests
 
-r = requests.get('https://api.github.com/events') #<Response [200]>
+# r = requests.get('https://api.github.com/events') #<Response [200]>
+# print(r)
+
+# r = requests.post('http://httpbin.org/post',data = {'key':'value'} )
+# print(r)
+
+# r = requests.put('http://httpbin.org/put', data = {'key':'value'})
+# print(r)
+# r = requests.delete('http://httpbin.org/delete')
+# print(r)
+# r = requests.head('http://httpbin.org/get')
+# print(r)
+# r = requests.options('http://httpbin.org/get')
+# print(r)
+
+# #######
+
+# #import requests
+# r = requests.get('https://api.github.com/events')
+# r.text
+# r.content
+# r.json()
+# #u'[{"repository":{"open_issues":0,"url":"https://github.com/...
+
+
+
+
+
+API = 'https://api.seniverse.com/v3/weather/now.json'
+KEY = 'ozqwsdskrj99euhd'
+location = input("请输入查询城市:")
+LANGUAGE = 'zh-Hans'
+UNIT = 'c'
+
+query_needed_params = {'key' : KEY,
+                       'location' : location,
+                       'language' : LANGUAGE,
+                       'unit' : UNIT }
+r = requests.get(API, params =query_needed_params, timeout =1)
 print(r)
-
-r = requests.post('http://httpbin.org/post',data = {'key':'value'} )
-print(r)
-
-r = requests.put('http://httpbin.org/put', data = {'key':'value'})
-print(r)
-r = requests.delete('http://httpbin.org/delete')
-print(r)
-r = requests.head('http://httpbin.org/get')
-print(r)
-r = requests.options('http://httpbin.org/get')
-print(r)
-
-#######
-
-#import requests
-r = requests.get('https://api.github.com/events')
-r.text
-r.content
-r.json()
-#u'[{"repository":{"open_issues":0,"url":"https://github.com/...
-
-
-
-
-
-
-
+print('url:\n', r.url)
+print('content:\n', r.text)
+r = r.json()
+weather = r.get('results')[0].get('now').get('text')
+print('json:\n', r)
+print(weather)
 
 
 
