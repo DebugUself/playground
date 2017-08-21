@@ -1,14 +1,9 @@
-# CH2  API 天气查询 程序说明
+# CH  程序说明
 
 ## Require
-
-- python 3.6
-- requests 2.14.2
- 
 ## Feature
 ## Usage
 ## Explorer_Note&Record
 ## Steps
 ## Structure
 ## Update
-

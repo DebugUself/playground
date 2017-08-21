@@ -12,7 +12,7 @@
 - 输入指令 h or help，打印帮助文档;
 - 输入指令 q or quit ，退出程序的交互;
 
-## Using
+## Usage
 
 - 下载 [weather_query.py](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/weather_query.py)
 - 在命令行中 cd 到 文件所在目录层级

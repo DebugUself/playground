@@ -82,7 +82,7 @@ def main():
     history_list = []
     filename = "weather_info.txt"
 #*   user_name = input("您的用户名")
-#*    user_history_dict = {}
+#*   user_history_dict = {}
 
     # 文件处理,得到天气字典
     weather_dict = csv_file_deal(filename,weather_dict)
