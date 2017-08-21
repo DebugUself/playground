@@ -12,6 +12,18 @@
 - 输入指令 h or help，打印帮助文档;
 - 输入指令 q or quit ，退出程序的交互;
 
+## Using
+
+- 下载 [weather_query.py](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/weather_query.py)
+- 在命令行中 cd 到 文件所在目录层级
+- 在命令行中输入
+   - python weather_query.py
+- 跟随提示操作即可
+
+## Explorer_Note&Record
+
+- [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)
+
 ## Steps
 
 - 0.输入城市名，返回该城市的天气数据；
@@ -35,7 +47,6 @@
 - [x] 2.退出函数 quit()
     - 2.1 输出的查询历史由字典换成文字
 - [x] 3.主体判断与调试 main()
-
 
 ## Structure
 
@@ -66,18 +77,6 @@
             --------- +
 
 
-## Using
-
-- 下载 [weather_query.py](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/project/weather_query.py)
-- 在命令行中 cd 到 文件所在目录层级
-- 在命令行中输入
-   - python weather_query.py
-- 跟随提示操作即可
-
-## Note&Record
-
-- [WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)
-
 ## Update
 
 ### v1.1
@@ -95,20 +94,20 @@
     - 探索记录:在[WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)中更新
     - keypoint
        - 标准库 csv
-            - [x]定义,功能
-            - [x]示例代码解读
-            - [x]参数含义
-            - [x]reader() 与 writer() 用法
-            - [x]与 file.read 的比较(参考@ Xiami)
+            - [x] 定义,功能
+            - [x] 示例代码解读
+            - [x] 参数含义
+            - [x] reader() 与 writer() 用法
+            - [x] 与 file.read 的比较(参考@ Xiami)
         - collection
-            - [x]定义,功能
-            - [x]示例代码解读
-            - [x]主要用法
-            - [?]对读写的应用
-        - [扩展]python 性能判定
-            - [ ]程序性能有哪些判断指标?
-            - [ ]判断方法?
-            - [ ]优化方法?
+            - [x] 定义,功能
+            - [x] 示例代码解读
+            - [x] 主要用法
+            - [?] 对读写的应用 -> 应该是 defaultdict 的 应用,后续再探
+        - [扩展] python 性能判定
+            - [ ] 程序性能有哪些判断指标?
+            - [ ] 判断方法?
+            - [ ] 优化方法?
 - [ ] Optimization: @thxiami 的亮点&Review
     - 触发:[亮点](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323538602) | [code review](https://github.com/NBR-hugh/Py101-004/commit/455e936cee237a3f688cf6289a8d3179b27c46a7##commitcomment-23744561)
     - 探索记录:在[WeatherInquiry_ExploringRecord.ipynb](https://github.com/NBR-hugh/Py101-004/blob/master/Chap1/note/CH1_WeatherInquiry_ExploringRecord.ipynb)中更新
@@ -122,4 +121,13 @@
     - [x]  修改 command
     - [ ]  利用字典调用函数
     - [ ]  class 封装用户信息
+
+- [ ] Optimization:浏览评价 get 到的点
+    - [x] [@ishanshan:调整readme结构, 用户与开发者分区](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)
+    - [ ] [探索使用__doc__](https://github.com/sea10253432/Py101-004/commit/f99df4119da6bae00bc4958a4897998f833e2ad4##commitcomment-23755835)
+    - [ ] [优化文件目录固定](https://github.com/csyuxuan/Py101-004/commit/ce349f1ad62ef340452b7e18a8fcabfa2bbee005##commitcomment-23755486)
+    - [ ] 
+    - [ ] 
+
+
 

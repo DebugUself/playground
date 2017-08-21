@@ -33,6 +33,11 @@ def csv_file_deal(filename,weather_dict):
             weather_dict[k] = v
     return weather_dict
 
+#*Ding
+# # 用户信息-历史记录存储
+# def user(user_name,history_list):
+#     user_history_dict[user_name] = history_list
+
 # 根据城市查询对应天气,并添加查询记录
 def weather_query(city,weather_dict,history_list):
     city_weather = weather_dict.get(city)
@@ -46,6 +51,7 @@ def weather_query(city,weather_dict,history_list):
 def quit (history_list):
     query_times = 0
     print('您的查询历史如下:')
+
     for i in history_list:
         query_times += 1
         print('第 %d 次查询:' % query_times,i)
@@ -54,6 +60,7 @@ def quit (history_list):
     正在退出程序...
     感谢使用!
     ''')
+#*   user(user_name,history_list)
     exit(0)
 
 # 打印帮助信息
@@ -64,6 +71,7 @@ def help():
     - 输入指令 h or help，打印帮助文档;
     - 输入指令 q or quit ，退出程序的交互;
     ''')
+
 # 主运行程序,根据用户输入判断执行的信息
 def main():
     print('# 天气查询小程序')
@@ -73,9 +81,14 @@ def main():
     weather_dict = {}
     history_list = []
     filename = "weather_info.txt"
+#*   user_name = input("您的用户名")
+#*    user_history_dict = {}
 
     # 文件处理,得到天气字典
     weather_dict = csv_file_deal(filename,weather_dict)
+
+    # 返回上次查询信息
+    print
 
     # 进入互动
     while True:
