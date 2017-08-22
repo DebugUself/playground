@@ -48,7 +48,7 @@ def weather_query(city,weather_dict,history_list):
     return city_weather,history_list
 
 # 退出程序,显示查询历史
-def quit (history_list):
+def show_history (history_list):
     query_times = 0
     print('您的查询历史如下:')
 
@@ -61,7 +61,7 @@ def quit (history_list):
     感谢使用!
     ''')
 #*   user(user_name,history_list)
-    exit(0)
+
 
 # 打印帮助信息
 def help():
@@ -69,8 +69,40 @@ def help():
     Tips:
     - 输入城市名，返回该城市的天气数据;
     - 输入指令 h or help，打印帮助文档;
-    - 输入指令 q or quit ，退出程序的交互;
+    - 输入指令 q or history ，退出程序的交互;
     ''')
+
+def user_interaction(weather_dict,history_list):
+       while True:
+        #weather_dict = weather_dict
+
+        # 接受用户信息,并进行异常处理
+        try:
+            command = input('>') # 接收用户信息
+        except Exception as e:
+            print('^D 强制退出...')
+            exit(0)
+        except KeyboardInterrupt as e:
+            print('键盘打断,中断程序...')
+            exit(0)
+
+        # 命令的判断
+        if command in ('h', 'help'):
+            help()
+        elif command in ('q', 'quit'):
+            show_history(history_list)
+            exit(0)
+        elif command in ('history'):
+            show_history(history_list)
+        elif weather_dict.get(command, None):
+            city = command
+            weather_query(city,weather_dict,history_list)
+        else:
+            print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
+            help()
+
+
+
 
 # 主运行程序,根据用户输入判断执行的信息
 def main():
@@ -88,33 +120,12 @@ def main():
     weather_dict = csv_file_deal(filename,weather_dict)
 
     # 返回上次查询信息
-    print
+    #print
 
     # 进入互动
-    while True:
-        #weather_dict = weather_dict
+    user_interaction(weather_dict,history_list)
 
-        # 接受用户信息,并进行异常处理
-        try:
-            command = input('>') # 接收用户信息
-        except Exception as e:
-            print('^D 强制退出...')
-            exit(0)
-        except KeyboardInterrupt as e:
-            print('键盘打断,中断程序...')
-            exit(0)
 
-        # 命令的判断
-        if command in ('h', 'help'):
-            help()
-        elif command in ('q', 'quit'):
-            quit(history_list)
-        elif weather_dict.get(command, None):
-            city = command
-            weather_query(city,weather_dict,history_list)
-        else:
-            print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
-            help()
 
 
 if __name__ == '__main__':
