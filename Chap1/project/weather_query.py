@@ -49,57 +49,64 @@ def weather_query(city,weather_dict,history_list):
 
 # 退出程序,显示查询历史
 def show_history (history_list):
-    query_times = 0
-    print('您的查询历史如下:')
+    query_time = len(history_list)
+    if query_time == 0:
+        print('您还未查询,没有任何记录.')
+    else:
+        print('您的有效查询历史如下:')
+        query_time = 0
+        for i in history_list:
+            query_time += 1
+            print('第 %d 次查询:' % query_time,i)
 
-    for i in history_list:
-        query_times += 1
-        print('第 %d 次查询:' % query_times,i)
-
-    print('''
-    正在退出程序...
-    感谢使用!
-    ''')
 #*   user(user_name,history_list)
+
+def quit(history_list):
+    show_history(history_list)
+    print('''
+          正在退出程序...
+          感谢使用!
+              ''')
+    exit(0)
 
 
 # 打印帮助信息
-def help():
+def help_info():
     print('''
     Tips:
-    - 输入城市名，返回该城市的天气数据;
-    - 输入指令 h or help，打印帮助文档;
-    - 输入指令 q or history ，退出程序的交互;
+    - 输入城市名，返回该城市最新的天气数据；
+    - 输入h 或 help，获取帮助信息；
+    - 输入history，获取历史查询信息；
+    - 输入q 或 quit，退出程序的交互；
     ''')
 
-def user_interaction(weather_dict,history_list):
-       while True:
-        #weather_dict = weather_dict
+def command_check(command):
+    try:
+        command
+    except Exception as e:
+        print('^D 强制退出...')
+        exit(0)
+    except KeyboardInterrupt as e:
+        print('键盘打断,中断程序...')
+        exit(0)
 
-        # 接受用户信息,并进行异常处理
-        try:
-            command = input('>') # 接收用户信息
-        except Exception as e:
-            print('^D 强制退出...')
-            exit(0)
-        except KeyboardInterrupt as e:
-            print('键盘打断,中断程序...')
-            exit(0)
 
-        # 命令的判断
-        if command in ('h', 'help'):
-            help()
-        elif command in ('q', 'quit'):
-            show_history(history_list)
-            exit(0)
-        elif command in ('history'):
-            show_history(history_list)
-        elif weather_dict.get(command, None):
-            city = command
-            weather_query(city,weather_dict,history_list)
-        else:
-            print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
-            help()
+# 交互命令识别,调用功能函数
+def commond_judge(command,weather_dict,history_list):
+    # 命令的判断
+    if command in ('h', 'help'):
+        help_info()
+    elif command in ('history'):
+        show_history(history_list)
+    elif command in ('q', 'quit'):
+        quit(history_list)
+    elif weather_dict.get(command, None):
+        city = command
+        weather_query(city,weather_dict,history_list)
+
+    else:
+        print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
+        help_info()
 
 
 
@@ -107,7 +114,7 @@ def user_interaction(weather_dict,history_list):
 # 主运行程序,根据用户输入判断执行的信息
 def main():
     print('# 天气查询小程序')
-    help()
+    help_info()
 
     # 设置参数,变量
     weather_dict = {}
@@ -123,8 +130,10 @@ def main():
     #print
 
     # 进入互动
-    user_interaction(weather_dict,history_list)
-
+    while True:
+        command = input('>') # 接收用户信息
+        command_check(command)
+        commond_judge(command,weather_dict,history_list,)
 
 
 

@@ -129,5 +129,11 @@
     - [ ] 
     - [ ] 
 
-
-
+- [x] Reusable:改造让 CH2 让ch2可复用
+    - [x] help()=>help_info(),防止与 python 内置函数冲突
+    - [x] main()进行拆分
+        - [x] error检查的command_check()
+        - [x] 识别命令的 command_judge()
+    - [x] 将 历史查询功能 history() 从 quit() 分离
+    - [x] 在 if...else 中添加 history() 功能呢分支
+   
