@@ -1,3 +1,14 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Program name: weather_query_API
+Author: NBR-hugh
+Github: https://github.com/NBR-hugh/
+Edition：v1.0
+Edit date: 2017.08.23
+"""
+
 import sys
 sys.path.append("/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project") # 让 python 解释器搜索该目录
 import weather_query as wq
@@ -29,7 +40,6 @@ def get_API_requests(city,weather_dict,history_list):
                '对不起,无该城市天气信息,请检查您的输入,或者查询其他城市...')
     else:
         print('抱歉,网络请求错误,请重试...')#其他错误代码,
-
 
 
 def json_handle(response,weather_dict,history_list):
