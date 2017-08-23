@@ -48,13 +48,44 @@
 
 ### 事项
 
-- CH2 基本投入完成 mvp 提交任务
+- CH2 基本投入完成 mvp,明日完成程序说明以及笔记修缮后提交
+    - 理解 import 机制,尝试使用相对导入失败 `42m`
+    - 转换关键词,import 绝对导入成功 `20m` 
+    - 改造:change ch1 to import  `42m`
+    - 根据调试体验再次改造 `42m`
+    - chaos: 改造错误,判断结构不可复用 `42m`
+    - 对 requests 进行判断 `42m`
+    - 主题调通,检查通读笔记 `42m`
+    - 写了一首小诗 `20m`
 
-- [ ] 撰写流程图说明,回复issue
-    - =>[ch1 任务难点「如何更好实现用户指令查询功能」的思考 · Issue #64 · AIHackers/Py101-004](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323540706)
-    -  [@ishanshan:readme 撰写分享](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)
+### 敌友
+
+- 现象:在分析判断结构时陷入思维混乱
+- 分析:多个判断对象/层级导致决定纠结,没有特别理想的方案就此混乱
+- 措施:及时记录及时分解,让思路显现化才能更容易暴露问题所在
+
 
 ### 复盘
 
 - 只用英文关键词进行搜索
-- 文档 和 Stack Overflow 是最高效的编程问题方案来源.
+- 官方文档 和 Stack Overflow 是最高效的编程问题方案来源,多用多看,方向是对的,慢就不怕
+
+## w2d2_170822
+
+### 事项
+
+- [ ]录屏:
+- [ ] 提交 ch2 
+- [ ] 撰写流程图说明,回复issue
+    - =>[ch1 任务难点「如何更好实现用户指令查询功能」的思考 · Issue #64 · AIHackers/Py101-004](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323540706)
+    -  [@ishanshan:readme 撰写分享](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)
+- [ ] 提交变量与全局变量的issue
+
+### 敌友
+
+### 复盘
+
+- 只用英文关键词进行搜索
+- 官方文档 和 Stack Overflow 是最高效的编程问题方案来源,多用多看,方向是对的,慢就不怕
+
+

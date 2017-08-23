@@ -11,6 +11,7 @@
 - 输入中文城市名，返回该城市的天气数据;
 - 输入指令 h or help，打印帮助文档;
 - 输入指令 q or quit ，退出程序的交互;
+- 输入指令 history, 打印查询历史.
 
 ## Usage
 
@@ -135,5 +136,5 @@
         - [x] error检查的command_check()
         - [x] 识别命令的 command_judge()
     - [x] 将 历史查询功能 history() 从 quit() 分离
-    - [x] 在 if...else 中添加 history() 功能呢分支
+    - [x] 在 if...else 中添加 history() 功能分支
    

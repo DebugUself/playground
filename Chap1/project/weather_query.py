@@ -80,36 +80,33 @@ def help_info():
     - 输入q 或 quit，退出程序的交互；
     ''')
 
-def command_check(command):
-    try:
-        command
-    except Exception as e:
-        print('^D 强制退出...')
-        exit(0)
-    except KeyboardInterrupt as e:
-        print('键盘打断,中断程序...')
-        exit(0)
-
-
-# 交互命令识别,调用功能函数
-def commond_judge(command,weather_dict,history_list):
-    # 命令的判断
+def command_work(command,history_list):
     if command in ('h', 'help'):
         help_info()
     elif command in ('history'):
         show_history(history_list)
     elif command in ('q', 'quit'):
         quit(history_list)
-    elif weather_dict.get(command, None):
-        city = command
-        weather_query(city,weather_dict,history_list)
-
     else:
-        print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
-        help_info()
+        print("该指令不能操作")
 
 
+def command_check(command,command_tuple,weather_dict,history_list):
+    try:
+        if command in command_tuple:
+            command_work(command,history_list)
+        elif weather_dict.get(command, None):
+            city = command
+            weather_query(city,weather_dict,history_list)
+        else:
+            print ("对不起,无该城市天气信息,请检查您的输入,或者查询其他城市!")
 
+    except EOFError as e:
+        print('^D 强制退出...')
+        exit(0)
+    except KeyboardInterrupt as e:
+        print('键盘打断,中断程序...')
+        exit(0)
 
 # 主运行程序,根据用户输入判断执行的信息
 def main():
@@ -119,6 +116,7 @@ def main():
     # 设置参数,变量
     weather_dict = {}
     history_list = []
+    command_tuple = ('h', 'help','history','q','quit')
     filename = "weather_info.txt"
 #*   user_name = input("您的用户名")
 #*   user_history_dict = {}
@@ -132,8 +130,9 @@ def main():
     # 进入互动
     while True:
         command = input('>') # 接收用户信息
-        command_check(command)
-        commond_judge(command,weather_dict,history_list,)
+
+        command_check(command,command_tuple,weather_dict,history_list)
+
 
 
 
