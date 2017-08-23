@@ -74,8 +74,7 @@
 
 ### 事项
 
-- [ ]录屏:
-- [ ] 提交 ch2 
+- [ ] 提交 ch2 20m
 - [ ] 撰写流程图说明,回复issue
     - =>[ch1 任务难点「如何更好实现用户指令查询功能」的思考 · Issue #64 · AIHackers/Py101-004](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323540706)
     -  [@ishanshan:readme 撰写分享](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)

@@ -73,7 +73,7 @@ def main():
     command_tuple = ('h', 'help','history','q','quit')
 
     while True:
-        command = input("请输入查询城市:")
+        command = input(">>> 请输入查询城市:")
 
         try:
             if command in command_tuple:
