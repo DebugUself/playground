@@ -51,32 +51,32 @@
 
 ## Structure
 
-
-            --------- +
-            {END}     ^                                                                                   +-> exit {end}
-                      ^                                                                                   |
-            (print)   ^                                                                                   |-> "user quiry history"   +->"help info"
-                      ^                                                                                   |                          |
-            (out)     ^              +->weather_dict ----------+  +->city_weather,history_list --------+  +                          |
-                      ^              |                         |  |                                    |  |                          |
-            [function]^  main()   +->file_deal()               |  weather_query()                      |  quit()                     help()
-                      ^   |       |  |                         |  |                                    |  |                          |
-            (in)      ^   |       |  +<-filename,weather_dict  |  +<-weather_dict,city,history_list    |  +<- history_list           +
-                      ^   |       |     ^        ^             |     ^            ^    ^               |  |   ^                      |
-                      ^   |       |     |        |             +-----+            |    |               +--|---+                      |
-                      ^   |       |     |        |                                |    |                  |                          |
-            (judge)   ^   |       |     |        |                              ?city  |              ?q or quit                ?h or help  ?wrong -> +
-                      ^   |       |     |        |                                ^    |                  ^                          ^          ^     |
-                      ^   |       |     |        |                                |    |                  |                          |          |     |
-            {BEGIN}   ^   +-----> + --> + -----> + -----------------------------> + -- + -----------------+------------------------> + -------- +     |
-            --------- +                                                           ^                       ^                          ^                |
-                      ^                                                           |                       |                          |                |
-                      |                                                           + ----- ------------- commond -------------------- +                |
-                      |                                                                                   |                                           |
-                      |                                                                                   +                                           |
-            Waiting...|                                                                                (input)<-------------------------------------- +
-            --------- +
-
+```java
+--------- +
+{END}     ^                                                                                   +-> exit {end}
+          ^                                                                                   |
+(print)   ^                                                                                   |-> "user quiry history"   +->"help info"
+          ^                                                                                   |                          |
+(out)     ^              +->weather_dict ----------+  +->city_weather,history_list --------+  +                          |
+          ^              |                         |  |                                    |  |                          |
+[function]^  main()   +->file_deal()               |  weather_query()                      |  quit()                     help()
+          ^   |       |  |                         |  |                                    |  |                          |
+(in)      ^   |       |  +<-filename,weather_dict  |  +<-weather_dict,city,history_list    |  +<- history_list           +
+          ^   |       |     ^        ^             |     ^            ^    ^               |  |   ^                      |
+          ^   |       |     |        |             +-----+            |    |               +--|---+                      |
+          ^   |       |     |        |                                |    |                  |                          |
+(judge)   ^   |       |     |        |                              ?city  |              ?q or quit                ?h or help  ?wrong -> +
+          ^   |       |     |        |                                ^    |                  ^                          ^          ^     |
+          ^   |       |     |        |                                |    |                  |                          |          |     |
+{BEGIN}   ^   +-----> + --> + -----> + -----------------------------> + -- + -----------------+------------------------> + -------- +     |
+--------- +                                                           ^                       ^                          ^                |
+          ^                                                           |                       |                          |                |
+          |                                                           + ----- ------------- commond -------------------- +                |
+          |                                                                                   |                                           |
+          |                                                                                   +                                           |
+Waiting...|                                                                                (input)< ------------------------------------- +
+--------- +
+```
 
 ## Update
 
@@ -127,8 +127,8 @@
     - [x] [@ishanshan:调整readme结构, 用户与开发者分区](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)
     - [ ] [探索使用__doc__](https://github.com/sea10253432/Py101-004/commit/f99df4119da6bae00bc4958a4897998f833e2ad4##commitcomment-23755835)
     - [ ] [优化文件目录固定](https://github.com/csyuxuan/Py101-004/commit/ce349f1ad62ef340452b7e18a8fcabfa2bbee005##commitcomment-23755486)
-    - [ ] 
-    - [ ] 
+    - [ ]
+    - [ ]
 
 - [x] Reusable:改造让 CH2 让ch2可复用
     - [x] help()=>help_info(),防止与 python 内置函数冲突
@@ -137,4 +137,4 @@
         - [x] 识别命令的 command_judge()
     - [x] 将 历史查询功能 history() 从 quit() 分离
     - [x] 在 if...else 中添加 history() 功能分支
-   
+

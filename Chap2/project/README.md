@@ -50,22 +50,23 @@
 
 ## Structure
 
-```python
+
+```java
 --------- +
-{END}     ^                                                                   +->exit()
-          ^                                                                   |
-(print)   ^                + ->"help_info"  + ->"history" & "help_info"       |                            +-> "city,weather,temp"             +-> 'NOT FOND'
-          ^                |                |                                 |                            |                                   |
-[out]     ^                |                |                                 |                            +-> weather_dict,history_list       +-------> + ---> +
-          ^                |                |                                 |                            |                                   |         ^      |
-[function]^                +-wq.help_info() +-wq.show_history()               +-wq.quit()                  +-json_handle()                     |         |      |
-          ^                |                |                                 |                            |                                   |         |      |
-[in]      ^                |                history_list<----- + -----------> +history_list                +response,weather_dict,history_list |         |      |
-          ^                |                |                  |                                           |                   ^         ^     |         |      |
-(judge)   ^                ?h,help          ?history           |             ?quit  ?else                  ?200                |         |     ?404      ?else  |
-          ^                ^                ^                  |             ^      ^                      ^                   |         |     ^         ^      |
-          ^                |                |                  |             |      |                      |                   |         |     |         |      |
-          ^                + -------------- + ------------------------------ +----- +                      + --------------------------------- + ------- +      |
+{END}     ^                                                               + ->exit()
+          ^                                                               |
+(print)   ^                + ->"help_info"  + ->"history" & "help_info"   |               + ->"c error"    + -> "city,weather,temp"            + -> 'NOT FOND'
+          ^                |                |                             |               |                |                                   |
+[out]     ^                |                |                             |               |                +-> weather_dict,history_list       +-------> + ---> +
+          ^                |                |                             |               |                |                                   |         ^      |
+[function]^                +-wq.help_info() +-wq.show_history()           +-wq.quit()     |                +-json_handle()                     |         |      |
+          ^                |                |                             |               |                |                                   |         |      |
+[in]      ^                |                history_list<----- + -------> +history_list   |                +response,weather_dict,history_list |         |      |
+          ^                |                |                  |                          |                |                   ^         ^     |         |      |
+(judge)   ^                ?h,help          ?history           |             ?quit        ?else            ?200                |         |     ?404      ?else  |
+          ^                ^                ^                  |             ^            ^                ^                   |         |     ^         ^      |
+          ^                |                |                  |             |            |                |                   |         |     |         |      |
+          ^                + -------------- + ------------------------------ +----------- +                + --------------------------------- + ------- +      |
           ^                |                                   |                                           |                   |         |                      |
 [pass]    ^             command     history_list-------------- +                                  response.status_code         |         |                      |
           ^                ^        ^                                                                      ^                   |         |                      |
@@ -79,11 +80,11 @@
 (judge)   ^  |             ?command:in command_tuple                                                       ?command:else  |        |                            |
           ^  |             ^                                                                               |              |        |                            |
           ^  |             |                                                                               |              |        |                            |
-{begin}   ^  + ----------> + ----------------------------------------------------------------------------- + ------------ + ------ +                            |
+{BEGIN}   ^  + ----------> + ----------------------------------------------------------------------------- + ------------ + ------ +                            |
 --------- +                                                                                                                                                     |
           |                ^command                                                                                                                             |
           |                |                                                                                                                                    |
-waiting...|              (input) <------------------------------------------------------------------------------------------------------------------------------ +
+waiting...|              (input) <----------------------------------------------------------------------------------------------------------------------------- +
 --------- +
 ```
 

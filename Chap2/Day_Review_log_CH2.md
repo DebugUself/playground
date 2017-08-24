@@ -70,17 +70,20 @@
 - 只用英文关键词进行搜索
 - 官方文档 和 Stack Overflow 是最高效的编程问题方案来源,多用多看,方向是对的,慢就不怕
 
-## w2d2_170822
+## w2d3_170822
 
 ### 事项
 
-- [ ] 提交 ch2 20m
-- [ ] 撰写流程图说明,回复issue
+- 提交 ch2 `20m`
+-  撰写流程图说明,回复issue `1h40m`
     - =>[ch1 任务难点「如何更好实现用户指令查询功能」的思考 · Issue #64 · AIHackers/Py101-004](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323540706)
     -  [@ishanshan:readme 撰写分享](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531)
-- [ ] 提交变量与全局变量的issue
+- 提交变量与全局变量的issue  `15m`  `车上`
 
 ### 敌友
+
+- 没有时间只是借口
+- 
 
 ### 复盘
 
