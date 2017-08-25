@@ -14,7 +14,7 @@
 
 ## Usage
 
-- 下载`weather_query.py` 与 `weather_query_API.py` 至同一目录层级
+- 下载`util`, `weather_query.py` 与 `weather_query_API.py` 至同一目录层级
 - 在命令行中 cd 到 文件所在目录层级
 - 在命令行中输入 `python weather_query_API.py`
 - 跟随界面提示信息操作即可
@@ -81,8 +81,8 @@
           ^  |             ^                                                                               |              |        |                            |
           ^  |             |                                                                               |              |        |                            |
 {BEGIN}   ^  + ----------> + ----------------------------------------------------------------------------- + ------------ + ------ +                            |
---------- +                                                                                                                                                     |
-          |                ^command                                                                                                                             |
+--------- +                ^                                                                                                                                    |
+          |             command                                                                                                                                 |
           |                |                                                                                                                                    |
 waiting...|              (input) <----------------------------------------------------------------------------------------------------------------------------- +
 --------- +
@@ -91,4 +91,13 @@ waiting...|              (input) <----------------------------------------------
 ## Update
 
 - [x] 温度单位转换
--
+- [ ] 将API的请求的变量分离出来成为变量配置文件
+    - => [Wangjunyu: 模仿心知天气demo的模块化尝试](https://github.com/Hugo1030/Py101-004/commit/e39f2cf738e527b5dbef1dbc3d2d8ec0f93859bf##commitcomment-23845207)
+    - [=> demo](https://github.com/seniverse/seniverse-api-demos/blob/master/python/utils/const_value.py)
+- [ ] 指定日期查询代码
+- [ ] 查询外国 API :OWM
+- [ ] 
+
+
+
+

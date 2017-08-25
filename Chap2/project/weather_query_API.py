@@ -13,16 +13,13 @@ import sys
 sys.path.append("/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project") # 让 python 解释器搜索该目录
 import weather_query as wq
 import requests
+from utils.const_value import API, KEY, UNIT, LANGUAGE, START, DAYS
 
 def get_API_requests(city,weather_dict,history_list):
     """
     发送 api 请求,对响应进行判断
     """
-    API = 'https://api.seniverse.com/v3/weather/now.json'
-    KEY = 'ozqwsdskrj99euhd'
     location = city
-    LANGUAGE = 'zh-Hans'
-    UNIT = 'c'
 
     query_needed = {'key' : KEY,
                     'location' : location,
@@ -42,14 +39,9 @@ def get_API_requests(city,weather_dict,history_list):
         print('抱歉,网络请求错误,请重试...')#其他错误代码,
 
 def get_API_daily():
+
     city = input(">>> 请输入查询城市:")
-    API = 'https://api.seniverse.com/v3/weather/daily.json'
-    KEY = 'ozqwsdskrj99euhd'
     location = city
-    LANGUAGE = 'zh-Hans'
-    UNIT = 'c'
-    START = 1
-    DAYS = 3
 
     query_needed = {'key' : KEY,
                     'location' : location,
@@ -58,7 +50,7 @@ def get_API_daily():
                     'start': START,
                     'days':DAYS}
 
-    response = requests.get(API, params =query_needed, timeout =1) # 向 API 发送请求了
+    response = requests.get(API_daily, params =query_needed, timeout =1) # 向 API 发送请求了
 
     if response.status_code == 200: #请求成功,打印相应天气信息并记录历史
         print("API 请求成功!")
