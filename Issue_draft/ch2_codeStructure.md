@@ -4,7 +4,7 @@
 
 - [=>](https://github.com/AIHackers/Py101-004/issues/64#issuecomment-323540706) @thxiami 学友:询问程序说明中流程图的画法
 - [=>](https://github.com/AIHackers/Py101-004/issues/47#issuecomment-323584531) @ishanshan 大总管: 期待分享一下写 README 的心得，和那个 structure 绘制的技巧。
-- [=>](https://github.com/AIHackers/Py101-004/issues/70#issuecomment-324278297) @ Miss-3278: 程序使用说明地址： ……(一直都不知道这个该写啥，/(ㄒoㄒ)/~~)
+- [=>](https://github.com/AIHackers/Py101-004/issues/70#issuecomment-324278297) @ Miss-3278: 程序使用说明地址： ……(一直都不知道这个该写啥，/(ㄒoㄒ)/~)
 
 - 所以,开个 issue 来谈谈,程序说明应该怎么写,抛砖引玉,欢迎交流指正. : D
 
@@ -15,7 +15,7 @@
         - 用法
         - 结构
         - 功能
-        - ... 
+        - ...
     - 即,以最快地速度
         - 让读者明了这是啥玩意
 
@@ -104,14 +104,14 @@ Waiting...|                                                                     
           ^                |                |                             |               |                |                                   |         ^      |
 [function]^                +-wq.help_info() +-wq.show_history()           +-wq.quit()     |                +-json_handle()                     |         |      |
           ^                |                |                             |               |                |                                   |         |      |
-[in]      ^                |                history_list<----- + -------> +history_list   |                +response,weather_dict,history_list |         |      |
-          ^                |                |                  |                          |                |                   ^         ^     |         |      |
-(judge)   ^                ?h,help          ?history           |             ?quit        ?else            ?200                |         |     ?404      ?else  |
-          ^                ^                ^                  |             ^            ^                ^                   |         |     ^         ^      |
-          ^                |                |                  |             |            |                |                   |         |     |         |      |
-          ^                + -------------- + ------------------------------ +----------- +                + --------------------------------- + ------- +      |
-          ^                |                                   |                                           |                   |         |                      |
-[pass]    ^             command     history_list-------------- +                                  response.status_code         |         |                      |
+[in]      ^                |                history_list                  +history_list   |                +response,weather_dict,history_list |         |      |
+          ^                |                |         ^                   |         ^     |                |                   ^         ^     |         |      |
+(judge)   ^                ?h,help          ?history  |                   ?quit     |     ?else            ?200                |         |     ?404      ?else  |
+          ^                ^                ^         |                   ^         |     ^                ^                   |         |     ^         ^      |
+          ^                |                |         |                   |         |     |                |                   |         |     |         |      |
+          ^                + -------------- + --------------------------- + ------------- +                + --------------------------------- + ------- +      |
+          ^                |                          |                             |                      |                   |         |                      |
+[pass]    ^             command     history_list----- + --------------------------- +             response.status_code         |         |                      |
           ^                ^        ^                                                                      ^                   |         |                      |
           ^                +--------+                                                                      |                   |         |                      |
           ^                |                                                                               |                   |         |                      |
@@ -141,12 +141,12 @@ waiting...|              (input) <----------------------------------------------
         - 从下到上
         - 从左往右,表头最好先画好
         - 先画横线与节点,再画竖线
-    - 04 如果在某个函数中调用函数,则需要再来一层[function] 
+    - 04 如果在某个函数中调用函数,则需要再来一层[function]
         - 如ch2版中所示
     - 05 基本上就是把表头中对应的量固定在对应的行,根据长度进行左右调整
     - 06 注意 md格式,用\`\`\` \`\`\` 来包含才不会变化, java 的渲染比较合适
         \`\`\`java
-        \`\`\` 
+        \`\`\`
 
 - 但**缺点**也很明显
     - 程序过于复杂就没办法了
@@ -170,7 +170,7 @@ waiting...|              (input) <----------------------------------------------
     - ...
 
 - 所以,是否还有什么快速 get 程序结构关系的好方法/工具?你是怎么想的呢!
- 
+
 - 以上,抛砖完成. : D
 
 ## 源

@@ -41,6 +41,35 @@ def get_API_requests(city,weather_dict,history_list):
     else:
         print('抱歉,网络请求错误,请重试...')#其他错误代码,
 
+def get_API_daily():
+    city = input(">>> 请输入查询城市:")
+    API = 'https://api.seniverse.com/v3/weather/daily.json'
+    KEY = 'ozqwsdskrj99euhd'
+    location = city
+    LANGUAGE = 'zh-Hans'
+    UNIT = 'c'
+    START = 1
+    DAYS = 3
+
+    query_needed = {'key' : KEY,
+                    'location' : location,
+                    'language' : LANGUAGE,
+                    'unit' : UNIT,
+                    'start': START,
+                    'days':DAYS}
+
+    response = requests.get(API, params =query_needed, timeout =1) # 向 API 发送请求了
+
+    if response.status_code == 200: #请求成功,打印相应天气信息并记录历史
+        print("API 请求成功!")
+        print (response.json())
+
+    elif response.status_code == 404: #未找到城市信息,用户重新输入
+        print (response.status_code,
+               '对不起,无该城市天气信息,请检查您的输入,或者查询其他城市...')
+    else:
+        print('抱歉,网络请求错误,请重试...')#其他错误代码,
+
 
 def json_handle(response,weather_dict,history_list):
     """
@@ -49,14 +78,19 @@ def json_handle(response,weather_dict,history_list):
     weather_json = response.json()  # 以 json 格式读取响应信息
     city = weather_json['results'][0]['location']['name']
     city_weather = weather_json['results'][0]['now']['text']
-    city_temperature = weather_json['results'][0]['now']['temperature']
-    iterm = f'{city} {city_weather} {city_temperature}摄氏度'
+    city_temp_c = weather_json['results'][0]['now']['temperature']
+    city_temp_f = temp_trans(city_temp_c)
+    iterm = f'{city} {city_weather} {city_temp_c} °C| {city_temp_f} °F'
     print(iterm)
 
-    weather_dict[city] = (city_weather,city_temperature)
+    weather_dict[city] = (city_weather,city_temp_c)
     history_list.append(iterm)
 
     return weather_dict,history_list
+
+def temp_trans(city_temp_c):
+    city_temp_f = (9 / 5) * int(city_temp_c) + 32
+    return city_temp_f
 
 
 def main():
@@ -92,4 +126,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    get_API_daily()
