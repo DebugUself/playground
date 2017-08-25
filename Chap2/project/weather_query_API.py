@@ -13,7 +13,7 @@ import sys
 sys.path.append("/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project") # 让 python 解释器搜索该目录
 import weather_query as wq
 import requests
-from utils.const_value import API, KEY, UNIT, LANGUAGE, START, DAYS
+from utils.const_value import API_NOW,API_DAILY, KEY, UNIT, LANGUAGE, START, DAYS
 
 def get_API_requests(city,weather_dict,history_list):
     """
@@ -26,7 +26,7 @@ def get_API_requests(city,weather_dict,history_list):
                     'language' : LANGUAGE,
                     'unit' : UNIT }
 
-    response = requests.get(API, params =query_needed, timeout =1) # 向 API 发送请求了
+    response = requests.get(API_NOW, params =query_needed, timeout =1) # 向 API 发送请求了
 
     if response.status_code == 200: #请求成功,打印相应天气信息并记录历史
         print("API 请求成功!")
@@ -50,7 +50,7 @@ def get_API_daily():
                     'start': START,
                     'days':DAYS}
 
-    response = requests.get(API_daily, params =query_needed, timeout =1) # 向 API 发送请求了
+    response = requests.get(API_DAILY, params =query_needed, timeout =1) # 向 API 发送请求了
 
     if response.status_code == 200: #请求成功,打印相应天气信息并记录历史
         print("API 请求成功!")
