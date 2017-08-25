@@ -97,22 +97,17 @@ def main():
     # 设置变量,指令集
     weather_dict = {}
     history_list = []
-    command_tuple = ('h', 'help','history','q','quit','daily')
+    command_tuple = ('h', 'help','history','q','quit','d')
 
     while True:
-        command = input(">>> 请输入查询城市:")
+        command = input(">>> 请输入指令或查询城市:")
         command_list = command.split(' ')
 
         try:
             if command in command_tuple:
                 cf.command_work(command,history_list)
-            elif command_list[1] in ["1","2","3"]:
-                get_API_daily(command_list[0],weather_dict,history_list)
-            elif command_list[1] == "0":
-                print(command)
-                get_API_requests(command_list[0],weather_dict,history_list)
             else:
-                print ("请重新输入")
+                get_API_requests(command,weather_dict,history_list)
 
         except EOFError:
             print('^D 强制退出...')
