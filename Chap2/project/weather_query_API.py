@@ -40,9 +40,8 @@ def get_API_requests(city,weather_dict,history_list):
     else:
         print('抱歉,网络请求错误,请重试...')#其他错误代码,
 
-def get_API_daily():
+def get_API_daily(city,weather_dict,history_list):
 
-    city = input(">>> 请输入查询城市:")
     location = city
 
     query_needed = {'key' : KEY,
@@ -109,11 +108,13 @@ def main():
             if command in command_tuple:
                 wq.command_work(command,history_list)
             elif command_list[1] in ["1","2","3"]:
-                get_API_daily()
+                get_API_daily(command_list[0],weather_dict,history_list)
             elif command_list[1] == "0":
-                get_API_requests(command,weather_dict,history_list)
+                print(command)
+                get_API_requests(command_list[0],weather_dict,history_list)
+                print(0)
             else:
-                print "请重新输入"
+                print ("请重新输入")
 
         except EOFError:
             print('^D 强制退出...')
