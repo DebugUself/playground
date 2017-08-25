@@ -30,31 +30,38 @@ import requests
 
 
 
-try:
+# try:
 
-    API = 'https://api.seniverse.com/v3/weather/now.json'
-    KEY = 'ozqwsdskrj99euhd'
-    location = input("请输入查询城市:")
-    LANGUAGE = 'zh-Hans'
-    UNIT = 'c'
+#     API = 'https://api.seniverse.com/v3/weather/now.json'
+#     KEY = 'ozqwsdskrj99euhd'
+#     location = input("请输入查询城市:")
+#     LANGUAGE = 'zh-Hans'
+#     UNIT = 'c'
 
-    query_needed_params = {'key' : KEY,
-                           'location' : location,
-                           'language' : LANGUAGE,
-                           'unit' : UNIT }
-    r = requests.get(API, params =query_needed_params, timeout =1)
-    if r.status_code = 200
-    print(r)
-    print('url:\n', r.url)
-    print('content:\n', r.text)
-    r = r.json()
-    weather = r.get('results')[0].get('now').get('text')
-    print('json:\n', r)
-    print(weather)
+#     query_needed_params = {'key' : KEY,
+#                            'location' : location,
+#                            'language' : LANGUAGE,
+#                            'unit' : UNIT }
+#     r = requests.get(API, params =query_needed_params, timeout =1)
+#     if r.status_code = 200
+#     print(r)
+#     print('url:\n', r.url)
+#     print('content:\n', r.text)
+#     r = r.json()
+#     weather = r.get('results')[0].get('now').get('text')
+#     print('json:\n', r)
+#     print(weather)
 
 
-except ReadTimeoutError as e:
-    print ("%s:网络超时,请您重新查询~")
+# except ReadTimeoutError as e:
+#     print ("%s:网络超时,请您重新查询~")
+command = "city0"
+command_list = command.split(' ')
+
+if command_list[1] in ["0","1","2"]:
+    print (command_list)
+else:
+    print (",,,")
 
 
 

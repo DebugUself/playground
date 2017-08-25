@@ -13,7 +13,9 @@ import sys
 sys.path.append("/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project") # 让 python 解释器搜索该目录
 import weather_query as wq
 import requests
-from utils.const_value import API_NOW,API_DAILY, KEY, UNIT, LANGUAGE, START, DAYS
+from utils.const_value import API_NOW, KEY, UNIT, LANGUAGE,\
+                              API_DAILY, START, DAYS,\
+                              HELP_INFO
 
 def get_API_requests(city,weather_dict,history_list):
     """
@@ -91,7 +93,8 @@ def main():
     """
     print('# 天气API查询小程序')
     print('- 所有天气数据来自心知天气~')
-    wq.help_info()
+    print (HELP_INFO)
+
 
     # 设置变量,指令集
     weather_dict = {}
@@ -100,10 +103,13 @@ def main():
 
     while True:
         command = input(">>> 请输入查询城市:")
+        command_list = command.split(' ')
 
         try:
             if command in command_tuple:
                 wq.command_work(command,history_list)
+            elif command_list[1] in ["0","1","2","4"]:
+                get_API_daily()
             else:
                 get_API_requests(command,weather_dict,history_list)
 
@@ -113,9 +119,14 @@ def main():
         except KeyboardInterrupt:
             print('键盘打断,中断程序...')
             exit(0)
+        except IndexError:
+            print('命令错误,请根据提示检查格式,重新查询')
+            print (HELP_INFO)
+
         except RuntimeError:
             print('请求超时,请确认网络状态,再重试...')
 
 
 if __name__ == '__main__':
-    get_API_daily()
+    #get_API_daily()
+    main()

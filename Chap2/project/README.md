@@ -91,7 +91,7 @@ waiting...|              (input) <----------------------------------------------
 ## Update
 
 - [x] 温度单位转换
-- [ ] 将API的请求的变量分离出来成为变量配置文件
+- [x] 将API的请求的变量分离出来成为变量配置文件
     - => [Wangjunyu: 模仿心知天气demo的模块化尝试](https://github.com/Hugo1030/Py101-004/commit/e39f2cf738e527b5dbef1dbc3d2d8ec0f93859bf##commitcomment-23845207)
     - [=> demo](https://github.com/seniverse/seniverse-api-demos/blob/master/python/utils/const_value.py)
 - [ ] 指定日期查询代码
