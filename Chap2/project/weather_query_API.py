@@ -11,11 +11,10 @@ Edit date: 2017.08.23
 
 import sys
 sys.path.append("/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project") # 让 python 解释器搜索该目录
-import weather_query as wq
+import utils.command_func as cf
 import requests
 from utils.const_value import API_NOW, KEY, UNIT, LANGUAGE,\
-                              API_DAILY, START, DAYS,\
-                              HELP_INFO
+                              API_DAILY, START, DAYS
 
 def get_API_requests(city,weather_dict,history_list):
     """
@@ -38,7 +37,7 @@ def get_API_requests(city,weather_dict,history_list):
         print (response.status_code,
                '对不起,无该城市天气信息,请检查您的输入,或者查询其他城市...')
     else:
-        print('抱歉,网络请求错误,请重试...')#其他错误代码,
+        print('抱歉,网络请求错误,请重试...') #其他错误代码,
 
 def get_API_daily(city,weather_dict,history_list):
 
@@ -92,13 +91,13 @@ def main():
     """
     print('# 天气API查询小程序')
     print('- 所有天气数据来自心知天气~')
-    print (HELP_INFO)
+    print (cf.help_info())
 
 
     # 设置变量,指令集
     weather_dict = {}
     history_list = []
-    command_tuple = ('h', 'help','history','q','quit')
+    command_tuple = ('h', 'help','history','q','quit','daily')
 
     while True:
         command = input(">>> 请输入查询城市:")
@@ -106,13 +105,12 @@ def main():
 
         try:
             if command in command_tuple:
-                wq.command_work(command,history_list)
+                cf.command_work(command,history_list)
             elif command_list[1] in ["1","2","3"]:
                 get_API_daily(command_list[0],weather_dict,history_list)
             elif command_list[1] == "0":
                 print(command)
                 get_API_requests(command_list[0],weather_dict,history_list)
-                print(0)
             else:
                 print ("请重新输入")
 
@@ -124,7 +122,7 @@ def main():
             exit(0)
         except IndexError:
             print('命令错误,请根据提示检查格式,重新查询')
-            print (HELP_INFO)
+            print (cf.help_info())
 
         except RuntimeError:
             print('请求超时,请确认网络状态,再重试...')
