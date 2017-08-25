@@ -108,10 +108,12 @@ def main():
         try:
             if command in command_tuple:
                 wq.command_work(command,history_list)
-            elif command_list[1] in ["0","1","2","4"]:
+            elif command_list[1] in ["1","2","3"]:
                 get_API_daily()
-            else:
+            elif command_list[1] == "0":
                 get_API_requests(command,weather_dict,history_list)
+            else:
+                print "请重新输入"
 
         except EOFError:
             print('^D 强制退出...')
