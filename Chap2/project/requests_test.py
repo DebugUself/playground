@@ -52,16 +52,33 @@ import requests
 #     print('json:\n', r)
 #     print(weather)
 
-
 # except ReadTimeoutError as e:
 #     print ("%s:网络超时,请您重新查询~")
-command = "city0"
-command_list = command.split(' ')
 
-if command_list[1] in ["0","1","2"]:
-    print (command_list)
-else:
-    print (",,,")
+# command = "city0"
+# command_list = command.split(' ')
+
+# if command_list[1] in ["0","1","2"]:
+#     print (command_list)
+# else:
+#     print (",,,")
+import sys
+sys.path.append("..")
+import weather_query_API as wqa
+
+
+wqa.test()
+
+
+
+
+
+
+
+
+
+
+
 
 
 

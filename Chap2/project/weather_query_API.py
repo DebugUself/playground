@@ -15,6 +15,8 @@ import utils.command_func as cf
 import requests
 from utils.const_value import API_NOW, KEY, UNIT, LANGUAGE,\
                               API_DAILY, START, DAYS
+def test():
+    print("ok!")
 
 def get_API_requests(city,weather_dict,history_list):
     """
@@ -40,7 +42,7 @@ def get_API_requests(city,weather_dict,history_list):
         print('抱歉,网络请求错误,请重试...') #其他错误代码,
 
 def get_API_daily(city,weather_dict,history_list):
-
+    print ("")
     location = city
 
     query_needed = {'key' : KEY,
@@ -118,7 +120,6 @@ def main():
         except IndexError:
             print('命令错误,请根据提示检查格式,重新查询')
             print (cf.help_info())
-
         except RuntimeError:
             print('请求超时,请确认网络状态,再重试...')
 
