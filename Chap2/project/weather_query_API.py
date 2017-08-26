@@ -10,6 +10,7 @@ Edit date: 2017.08.23
 """
 import utils.command_func as cf
 import API_deal as ad
+import requests
 
 
 
@@ -35,7 +36,7 @@ def main():
             if command in command_tuple:
                 cf.command_work(command,weather_dict,history_list)
             else:
-                ad.get_API_requests(command_list[0],weather_dict,history_list)
+                ad.get_API_now(command_list[0],weather_dict,history_list)
 
         except EOFError:
             print('^D 强制退出...')
