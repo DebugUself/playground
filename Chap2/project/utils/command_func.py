@@ -18,10 +18,7 @@ def unit_switch(command):
 
     return unit
 
-
-
-
-def command_work(command,weather_dict,history_list):
+def command_work(command, history_list):
     if command in ('h', 'help'):
         help_info("NOW")
     elif command in ('history'):
@@ -65,6 +62,7 @@ def help_info(help_type):
         - 输入c, 显示摄氏度单位
         - 输入f. 显示华氏度单位
         - 输入d,进入日期查询模式
+        - 输入owm,切换 OpenWeatherMap API 查询即时天气
         """,
 
     "DAILY" : """
@@ -75,7 +73,15 @@ def help_info(help_type):
             - "武汉 1"  获取武汉明日天气预报
             - "武汉 2"  获取武汉后日天气预报
         - 输入 q 退出该模式
-        """
+        """,
+
+    "OWM" : """
+       OpenWeatherMap:
+       - Welcome to OpenWeatherMap API!
+       - Input cityname(like: 'beijing','London'),output the weather
+       - Inoput 'q',exit OpenWeatherMap API
+       """
+
     }
 
     print(help_dict[help_type])
