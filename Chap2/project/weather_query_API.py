@@ -22,7 +22,7 @@ def main():
 
     # 设置变量, 指令集
     history_list = []
-    command_tuple = ('h',  'help', 'history', 'q', 'quit')
+    command_tuple = ('h', 'help', 'history', 'q', 'quit')
     unit_switch_tuple = ('c', 'f')
     API_tuple = ('owm')
     unit = "c"
@@ -52,7 +52,7 @@ def main():
             exit(0)
         except IndexError:
             print('NOW_MODE:命令错误, 请根据提示检查格式, 重新查询')
-            print (cf.help_info("NOW"))
+            print(cf.help_info("NOW"))
         except requests.exceptions.Timeout:
             print('请求超时, 请确认网络状态, 再重试...')
 

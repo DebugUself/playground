@@ -95,7 +95,9 @@ waiting...|              (input) <----------------------------------------------
     - => [Wangjunyu: 模仿心知天气demo的模块化尝试](https://github.com/Hugo1030/Py101-004/commit/e39f2cf738e527b5dbef1dbc3d2d8ec0f93859bf##commitcomment-23845207)
     - [=> demo](https://github.com/seniverse/seniverse-api-demos/blob/master/python/utils/const_value.py)
 - [x] 指定日期查询代码
-- [ ] 查询外国 API :OWM 
+- [x] 查询外国 API :OWM 
+- [ ] API的设计
+- [ ] 输入补全与跟随
 
 
 

@@ -62,14 +62,34 @@ import requests
 #     print (command_list)
 # else:
 #     print (",,,")
-import sys
-sys.path.append("..")
-import weather_query_API as wqa
+
+# import sys
+# sys.path.append("..")
+# import weather_query_API as wqa
 
 
-wqa.test()
+# wqa.test()
 
+# 装饰器小探
 
+print('<1>')
+
+registry = []
+
+def register(func):
+    print(func)
+    print('<2>')
+    registry.append(func)
+    print(registry)
+    return func
+
+@register
+def f2():
+    print("wf")
+
+if __name__ == '__main__':
+    print('<4>')
+    f1()
 
 
 
