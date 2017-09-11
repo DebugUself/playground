@@ -23,10 +23,6 @@
 - 选一个国内 API 和国外 API 分别进行调用，了解不同的调用姿势。更进一步，如果你来设计 API ，你会怎么设计？
 - 给程序增加温度单位转换功能？
 
-## Overweight Task
-
-
-
 ## Keypoint OverView
 
 - API
