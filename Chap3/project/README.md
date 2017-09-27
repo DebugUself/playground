@@ -3,6 +3,9 @@
 # CH  程序说明
 
 ## Require
+
+- py>3.2
+- Flask > 0.10 and Werkzeug > 0.9 
 ## Feature
     - 输入城市名，返回该城市最新的天气数据；
     - 点击帮助,获取帮助信息
