@@ -1,0 +1,53 @@
+42h[TASK]2017-06-03 怼周会会
+
+## 发言主题
+- @zhangshiyinrunwithcc `column_row_key` `Security` `Server` `datatype(dtype)` `SIGNED` `array` `numpy_bool` `文档友好度`
+
+### 时间账单活动类别
+
+- 数据库选择标准
+  + 成本:安装与配置
+    * sqlite 1.9MB
+    * mysql 333mb + server security --> 似乎较为复杂
+    * pandas numpy 440mb 
+    
+  + 对象:处理数据特点
+    * mysql
+      * column row key
+      * int float str
+      * SIGNED
+    * pandas numpy
+      * bool int str float complex
+      * array  --> 似乎较为标准
+        
+  + 文档:友好度
+    * mysql
+      * 似乎没有具体的tutorial 
+    * numpy
+      * 有basic tutorial  
+      * [Quickstart tutorial — NumPy v1.13.dev0 Manual](https://docs.scipy.org/doc/numpy-dev/user/quickstart.html)
+    * pandas
+      * 有10minutes to pandas --> 似乎特别友好
+      * [10 Minutes to pandas — pandas 0.20.1 documentation](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+  
+  
+- 活动类型分类
+  + BUT 就我自己经验而看  我的活动分类是持续变化的
+
+# 大妈时间账单小组会02次
+170603
+
+- 厘清概念
+  + `数据分析`与`数据存储`不是一回事
+  + 对静态数据进行分析和研究
+  + 数据库是结构性数据库
+  + 先把数据结构化 并把结构固定化 
+  + **找到方便分析的数据结构, 并非方便存储**
+  + `数据集` vs `数据存储` 不同概念
+    + **40mins 越搜索越糊涂 就应该问一问同组人员**
+
+- 想做vs能做
+  + 应该想做什么就去突破
+  + 而不是能做什么才去做什么
+    * 比如对可视化感兴趣 可成为甲方 向乙方提出数据要求
+
