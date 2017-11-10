@@ -14,6 +14,9 @@
 - 格式n次
 - commit作品n次
 - 晚上登记成果1次
+    + pl4zsy commit history
+    + du4proto git pull 
+    + du4proto s08plan append links
 
 # Changelog
 17.11.10 bear init
