@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FitLog</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="/static/jquery.min.js"></script>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+    	  color:#fff;
+      	background-color:#333;
+      	font-family: 'microsoft yahei' ,Arial,sans-serif;
+    }
+    .jumbotron {
+      background: url("http://upload-images.jianshu.io/upload_images/201022-c357ecdb77a33c46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    </style>
+    <script type="text/javascript">
+      var movrec
+      function getMov(){
+        var daterecord = getTime();
+        var category = exercise1.category.value;
+        var exercise = exercise1.exercise.value;
+        var time = exercise1.time.value;
+        var repetition = exercise1.repetition.value;
+        var set = exercise1.set.value;
+        var weight = exercise1.weight.value;
+        var distance = exercise1.distance.value;
+        movrec = daterecord + " " + exercise + " " +
+        time + " " + repetition + " " + set + " " + weight + " " + distance+","
+        // var htmlrec = "已添加运动记录：" + movrec;
+        // document.getElementById("record").innerHTML=htmlrec;
+        // 以上两行以测试输出一条运动记录
+        alert("已添加运动记录：" + movrec);
+        return movrec
+      }
+
+      function getTime()
+      {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth()+1; // 因为getMonth返回从0开始的整数
+        var day = today.getDate();
+        var datestr = year+"-"+month+"-"+day;
+        document.getElementById("dateresult").innerHTML=datestr
+        return datestr
+      }
+      setInterval("getTime()", 1000);
+      // 以上是用以获取当天时间
+
+      //这个 请选择 选项 加的很好。
+      var jiaArr = ["选择类别","上肢", "下肢", "核心", "功能性"];
+      var exampleArr = [
+              ["选择动作"],
+              ["卧推", "哑铃卧推", "俯身划船"],
+              ["硬拉", "深蹲", "剪蹲"],
+              ["卷腹", "平板支撑"],
+              ["跑步", "波比", "甩绳", "壶铃摇摆"]
+      ];
+      window.onload = function () {
+
+          var selJia = document.getElementById("jia");
+          //申请空间 我：上行用变量seljia获取html元素，这行让seljia空间长度等于jiaArr列表长度
+          selJia.length = jiaArr.length;
+          //添加元素 我：for循环，构建html select中的option，比如i＝0时，
+          // opiton[0]= <option value="请选择">请选择</option>
+          // 所以js中的text构建了html的直接显示文本？像<option>文本</option>
+          // var.length 声明元素的个数，所以这里i最多到3
+          for (var i = 0; i < jiaArr.length; i++) {
+              selJia.options[i].text = jiaArr[i];
+              selJia.options[i].value = jiaArr[i];
+          }
+
+          document.getElementById("theButton").onclick = function() {
+              getMov()
+              $.post( "/postmov", { movdata: movrec });
+	  };
+
+         // document.getElementById("HistoryButton").onclick = function() {
+         //     $.post( "/posthistory", { movdata: movrec });
+	 // };
+
+
+     }
+
+      function ChangeExampleSelect(index)
+      {
+          var selExa = document.getElementById("example");
+
+          selExa.length = exampleArr[index].length;
+
+          for (var i = 0; i < exampleArr[index].length; i++)
+          {
+              selExa.options[i].text = exampleArr[index][i];
+              selExa.options[i].value = exampleArr[index][i];
+          }
+      }
+    </script>
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <h2>Fitlog,随时随地的训练笔记</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <form action="/" method="POST" name="exercise1" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">DATE</label>
+            <div class="col-sm-8">
+              <h5 id="dateresult"></h5>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">CATEGORY</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="jia" name="category" onchange="ChangeExampleSelect(this.selectedIndex)"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">EXERCISE</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="example" name="exercise"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">TIME</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="time" placeholder="请输入时间/分">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">REP</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="repetition" placeholder="请输入次数">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">SET</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="set" placeholder="请输入组数">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">WEIGHT</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="weight" placeholder="请输入负重/kg">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge">DISTANCE</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="distance" placeholder="请输入距离/km">
+            </div>
+          </div>
+          <input class="btn btn-primary" id = "theButton" type="submit" name="addex" value="添加">
+          <input class="btn btn-primary" id = "HistoryButton" type="submit" name="history" value="历史数据">
+          <input class="btn btn-primary" id = "lastWeek" type="submit" name="lastweek" value="一周Fit">
+        </form>
+      </div>
+      <div class="col-lg-6">
+        <!-- <div id="content"></div> -->
+        <!-- <div id="record"></div> -->
+        {% block content %}{% endblock %}
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</body>
+</html>
