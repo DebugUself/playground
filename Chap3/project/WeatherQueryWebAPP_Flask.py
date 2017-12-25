@@ -11,14 +11,16 @@ Edit date: 2017.09.13
 
 from flask import Flask  #引入 flask 类
 from flask import render_template # 引入渲染模板
+from flask import request
 
 app = Flask(__name__)  #该类的一个示例就是WSGI交互程序
 
 @app.route('/')  #告诉 flask 什么样的 url 可以触发函数
-def hello_world() :  #函数名用于生成url,并返回想要呈现在用户浏览器的信息
-    return "Hello,World!"
+def index_func() :      #函数名用于生成url,并返回想要呈现在用户浏览器的信息
+    return render_template('Index.html')
 
-@app.route('/helpinfo')
-def help_func() : 
-	return render_template('HelpInfo.html')
+@app.route('/commond')
+def query_func():
+    searchword = request.args.get('city', '')
+    return searchword
 
