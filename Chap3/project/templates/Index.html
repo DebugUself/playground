@@ -5,18 +5,23 @@
 	<title>WeatherQuery</title>
 	<meta charset="utf-8">
 </head>
+
 <body>
 	<h1>WeatherQuery</h1>
 	<p>Welcome!</p>
-	<p>Please input the city name</p>
+	<p>Please input the city name.</p>
 
 	<div>
-		<form action="commond" method="GET">
-			<label for="city">指令:</label>
-			<input type="text" name="city">
-			<input type="submit" value="提交">
-		</form>
+		<form action="/" method="post">
+			<input type="text" name="input_text" placeholder="输入查询的城市名称,回车确认">
+			<input type="submit" name="history" value="history">
+			<input type="submit" name="help" value="help">
 	</div>
+
+	<div>
+        <pre> {{ DisplayInfo }}</pre>
+	</div>
+	
 
 </body>
 </html>
