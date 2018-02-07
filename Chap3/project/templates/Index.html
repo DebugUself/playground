@@ -14,12 +14,14 @@
 	<div>
 		<form action="/" method="post">
 			<input type="text" name="input_text" placeholder="输入查询的城市名称,回车确认">
+			<input type="submit" name="query" value="query">
 			<input type="submit" name="history" value="history">
 			<input type="submit" name="help" value="help">
 	</div>
 
 	<div>
         <pre> {{ DisplayInfo }}</pre>
+        <pre> {{ HistoryInfo }}</pre>
 	</div>
 	
 
