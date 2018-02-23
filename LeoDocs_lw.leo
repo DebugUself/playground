@@ -366,8 +366,7 @@
 <v t="ekr.20100805171546.4412"><vh>Web pages</vh>
 <v t="ekr.20101112045055.5065"><vh>@url docs generated from plugin_catalog.py</vh></v>
 <v t="ekr.20131005214621.16088"><vh>Home page</vh>
-<v t="omlalala.20180206203511.1"
-expanded="omlalala.20180206203511.6,omlalala.20180206203511.12,"><vh>@file index.html</vh></v>
+<v t="omlalala.20180206203511.1"><vh>@file index.html</vh></v>
 </v>
 <v t="ekr.20101115152915.4937"><vh>wikipedia entry</vh></v>
 </v>
@@ -2285,7 +2284,10 @@ http://leoeditor.com/tutorial.html
 
 任何疑问到这来交流:
 http://groups.google.com/group/leo-editor
-</t>
+
+#1 检验.
+成员编辑相同 node, 能否 merge 冲突?
+位置: LeoDocA/LeoDocs_lw.leo</t>
 <t tx="ekr.20051202072010"></t>
 <t tx="ekr.20060211140947.1">try:
     theId = os.getenv('USER')
