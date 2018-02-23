@@ -431,7 +431,7 @@
 <v t="omlalala.20180206205022.96"><vh>@rst docs/acknowledgements.html</vh></v>
 <v t="omlalala.20180206205022.97"><vh>@rst docs/license.html</vh></v>
 </v>
-<v t="omlalala.20180206205022.98"><vh>Installing &amp; running Leo</vh>
+<v t="omlalala.20180206205022.98"><vh>(LW:100%)Installing &amp; running Leo</vh>
 <v t="omlalala.20180206205022.99"><vh>@rst docs/getting-started.html</vh></v>
 <v t="omlalala.20180206205022.100"><vh>@rst docs/download.html</vh>
 <v t="omlalala.20180206205022.101"><vh>Snapshots</vh></v>
@@ -2287,7 +2287,7 @@ http://groups.google.com/group/leo-editor
 
 #1 检验.
 成员编辑相同 node, 能否 merge 冲突?
-位置: LeoDocB/LeoDocs_OM.leo</t>
+位置: LeoDocA/LeoDocs_OM.leo</t>
 <t tx="ekr.20051202072010"></t>
 <t tx="ekr.20060211140947.1">try:
     theId = os.getenv('USER')
