@@ -1,13 +1,14 @@
 import requests
 from .utils.const_value import API_NOW, KEY, LANGUAGE, \
-                              API_DAILY, START, DAYS, \
-                              OWM_API,OWM_APIKEY,OWM_ID
+    API_DAILY, START, DAYS, \
+    OWM_API, OWM_APIKEY, OWM_ID
 
 
 def test():
     print("ok!")
 
-def get_API_now(unit, city, history_list):
+
+def get_API_now(unit, city):
     """
     NowMode:发送 now_api 请求, 对响应进行判断处理,  显示天气, 添加至历史记录
     """
@@ -19,24 +20,24 @@ def get_API_now(unit, city, history_list):
 
     print("正在发生请求获取响应...")
     response = requests.get(
-        API_NOW, params = seniverse_param, timeout = 20)  # 向 API 发送请求了
+        API_NOW, params=seniverse_param, timeout=20)  # 向 API 发送请求了
 
-    if response.status_code == 200:  #请求成功, 打印相应天气信息并记录历史
+    if response.status_code == 200:  # 请求成功, 打印相应天气信息并记录历史
         print("API 请求成功!")
         weather_josn = response.json()
         Display_weather = josn_now_deal(unit, weather_josn)
-        history_list.append(Display_weather)
+        with open('QueryHistory.txt', 'a') as query_histroy:
+            query_histroy.write(Display_weather)
 
-    elif response.status_code == 404:  #未找到城市信息, 用户重新输入
-        Display_weather='''
+    elif response.status_code == 404:  # 未找到城市信息, 用户重新输入
+        Display_weather = '''
                         对不起, 无该城市天气信息,\n
                         请检查您的输入, 或查询其他城市...
                         '''
     else:
-        Display_weather='抱歉, 网络请求错误, 请重试...' #其他错误代码
+        Display_weather = '抱歉, 网络请求错误, 请重试...'  # 其他错误代码
 
-    return Display_weather,history_list
-
+    return Display_weather
 
 
 def get_API_daily(unit, city_num_list, history_list):
@@ -56,33 +57,35 @@ def get_API_daily(unit, city_num_list, history_list):
     else:
         print("please check weather_josn")
 
-def seniverse_params(unit,city):
+
+def seniverse_params(unit, city):
     """
     心知天气 api 请求所需参数
     """
     seniverse_params = {
-        'key' : KEY,
-        'location' : city,
-        'language' : LANGUAGE,
-        'unit' : unit
+        'key': KEY,
+        'location': city,
+        'language': LANGUAGE,
+        'unit': unit
     }
     return seniverse_params
 
-def get_response(params,API):
+
+def get_response(params, API):
     """
     发送API请求, 对响应进行判断
     """
     print("正在发生请求获取响应...")
     response = requests.get(
-        API, params = params, timeout = 20)  # 向 API 发送请求了
-    #print(response.url)
-    if response.status_code == 200:  #请求成功, 打印相应天气信息并记录历史
+        API, params=params, timeout=20)  # 向 API 发送请求了
+    # print(response.url)
+    if response.status_code == 200:  # 请求成功, 打印相应天气信息并记录历史
         print("API 请求成功!")
         return response.json()
-    elif response.status_code == 404:  #未找到城市信息, 用户重新输入
+    elif response.status_code == 404:  # 未找到城市信息, 用户重新输入
         print (response.status_code, '对不起, 无该城市天气信息, 请检查您的输入, 或者查询其他城市...')
     else:
-        print('抱歉, 网络请求错误, 请重试...')  #其他错误代码
+        print('抱歉, 网络请求错误, 请重试...')  # 其他错误代码
 
 
 def josn_now_deal(unit, weather_josn):
@@ -108,6 +111,7 @@ def josn_now_deal(unit, weather_josn):
     print(Display_weather)
 
     return Display_weather
+
 
 def josn_daily_deal(unit, weather_josn, day_num):
     """
@@ -143,6 +147,7 @@ def josn_daily_deal(unit, weather_josn, day_num):
     print(Display_weather)
     return Display_weather
 
+
 def unit_change(unit):
     """
     单位转换
@@ -168,30 +173,33 @@ def unit_change(unit):
 #     city_temp_f = (9 / 5) * int(city_temp_c) + 32
 #     return city_temp_f
 
+
 def get_owm_weather_now(unit, city, history_list):
     """
     获取owm 的即时天气信息
     """
     print("get_owm_weather_now begin!")
-    owm_param = owm_params(city,unit)
+    owm_param = owm_params(city, unit)
     weather_josn = get_response(owm_param, OWM_API)
     if weather_josn != None:
-        Display_weather = handle_owm_now_josn(weather_josn,unit)
+        Display_weather = handle_owm_now_josn(weather_josn, unit)
         history_list.append(Display_weather)
     else:
         print("please check weather_josn")
 
+
 def owm_params(city, unit):
     print("正在获取参数...")
-    unit_meaning = {'c': 'metric', 'f':'imperial' }
+    unit_meaning = {'c': 'metric', 'f': 'imperial'}
     owm_params = {
         'ID': OWM_ID,
         'APPID': OWM_APIKEY,
         'q': city,
         'lang': 'zh_cn',
-        'units':unit_meaning[unit]
+        'units': unit_meaning[unit]
     }
     return owm_params
+
 
 def handle_owm_now_josn(weather_josn, unit):
     print(weather_josn)
@@ -205,7 +213,6 @@ def handle_owm_now_josn(weather_josn, unit):
         humidity = weather_josn['main']['humidity']
         # visibility = weather_josn['visibility']
         wind_speed = weather_josn['wind']['speed']
-
 
         # 提取 单位信息
         unit_dict = unit_change(unit)
@@ -225,12 +232,6 @@ def handle_owm_now_josn(weather_josn, unit):
         return Display_weather
 
     except KeyError as e:
-        print("KeyError",e )
+        print("KeyError", e)
     except UnboundLocalError as e:
-        print("UnboundLocalError",e)
-
-
-
-
-
-
+        print("UnboundLocalError", e)

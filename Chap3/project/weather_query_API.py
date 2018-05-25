@@ -9,8 +9,9 @@ Edition：v1.0
 Edit date: 2017.08.23
 """
 import utils.command_func as command_func
-import API_deal 
+import API_deal
 import requests
+
 
 def main():
     """
@@ -56,6 +57,7 @@ def main():
         except requests.exceptions.Timeout:
             print('请求超时, 请确认网络状态, 再重试...')
 
+
 def daily_mode(unit, history_list):
     """
     DailyMode: 识别 城市,数字, 与指令 q, 捕捉错误
@@ -75,6 +77,7 @@ def daily_mode(unit, history_list):
         except IndexError:
             print('Daily_MODE:命令错误, 请根据提示检查格式, 重新查询')
 
+
 def switch_owm_api(unit, history_list):
     command_func.help_info("OWM")
 
@@ -92,5 +95,5 @@ def switch_owm_api(unit, history_list):
 
 
 if __name__ == '__main__':
-    #get_API_daily()
+    # get_API_daily()
     main()

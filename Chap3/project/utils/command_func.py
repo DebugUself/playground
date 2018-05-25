@@ -13,10 +13,12 @@ import sys
 sys.path.append("..")
 import API_deal as ad
 
+
 def unit_switch(command):
     unit = command
 
     return unit
+
 
 def command_work(command, history_list):
     if command in ('h', 'help'):
@@ -28,7 +30,8 @@ def command_work(command, history_list):
     else:
         print("该指令不能操作")
 
-def show_history (history_list):
+
+def show_history(history_list):
     query_time = len(history_list)
     if query_time == 0:
         print('您还未查询,没有任何记录.')
@@ -37,9 +40,10 @@ def show_history (history_list):
         query_time = 0
         for i in history_list:
             query_time += 1
-            print('第 %d 次查询:' % query_time,i)
+            print('第 %d 次查询:' % query_time, i)
 
 #*   user(user_name,history_list)
+
 
 def quit(history_list):
     show_history(history_list)
@@ -52,8 +56,8 @@ def quit(history_list):
 
 # 打印帮助信息
 def help_info(help_type):
-    help_dict={
-    "NOW" : """
+    help_dict = {
+        "NOW": """
         Tips:
         - 输入城市名称,获取即时天气信息
         - 输入h 或 help，获取帮助信息；
@@ -65,7 +69,7 @@ def help_info(help_type):
         - 输入owm,切换 OpenWeatherMap API 查询即时天气
         """,
 
-    "DAILY" : """
+        "DAILY": """
         DAILY MODE:
         - 欢迎进入日期查询模式!
         - 输入"城市 数字",获取今起三天的天气预报,如:
@@ -75,7 +79,7 @@ def help_info(help_type):
         - 输入 q 退出该模式
         """,
 
-    "OWM" : """
+        "OWM": """
        OpenWeatherMap:
        - Welcome to OpenWeatherMap API!
        - Input cityname(like: 'beijing','London'),output the weather
@@ -85,7 +89,3 @@ def help_info(help_type):
     }
 
     print(help_dict[help_type])
-
-
-
-
