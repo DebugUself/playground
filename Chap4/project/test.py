@@ -11,6 +11,7 @@ import sys
 
 def main():
     print ("Test")
+    print ("git commits text")
 
 
 if __name__ == '__main__':

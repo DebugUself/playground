@@ -1,0 +1,840 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cmd",
+				"cmd+shift+p"
+			],
+			[
+				"com",
+				"commit"
+			],
+			[
+				"NBR",
+				"NBR-hugh"
+			],
+			[
+				"NB",
+				"NBR-hugh"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"fla",
+				"float"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"f",
+				"footer"
+			],
+			[
+				"box-shadow",
+				"box-shadow: 〔property〕"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"shadow",
+				"box-shadow"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"Display",
+				"display"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"his",
+				"history"
+			],
+			[
+				"history",
+				"history_list"
+			],
+			[
+				"D",
+				"Display_weather"
+			],
+			[
+				"fo",
+				"form"
+			],
+			[
+				"t",
+				"type\tAttr"
+			],
+			[
+				"c",
+				"command_work"
+			],
+			[
+				"re",
+				"return〔keyword〕"
+			],
+			[
+				"ma",
+				"meta\tTag"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"r",
+				"render_template"
+			],
+			[
+				"helpf",
+				"helpinfo"
+			],
+			[
+				"Sublime",
+				"SublimeText3"
+			],
+			[
+				"Mar",
+				"MarkdownEditing"
+			],
+			[
+				"isn",
+				"installation"
+			],
+			[
+				"s",
+				"switch_owm_api"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"v",
+				"visbility_uint"
+			],
+			[
+				"tem",
+				"temp"
+			],
+			[
+				"temp_",
+				"temp_min"
+			],
+			[
+				"temp",
+				"temp_max"
+			],
+			[
+				"unit",
+				"unit_meaning"
+			],
+			[
+				"uni",
+				"unit"
+			],
+			[
+				"p",
+				"pressure"
+			],
+			[
+				"OW",
+				"OWM_ID"
+			],
+			[
+				"unit_",
+				"unit_dict"
+			],
+			[
+				"wind_",
+				"wind_speed"
+			],
+			[
+				"day",
+				"day_num"
+			],
+			[
+				"ci",
+				"city_num_list"
+			],
+			[
+				"i",
+				"iterm"
+			],
+			[
+				"l",
+				"low_temp"
+			],
+			[
+				"h",
+				"high_temp"
+			],
+			[
+				"text",
+				"text_night"
+			],
+			[
+				"command_",
+				"command_list"
+			],
+			[
+				"help",
+				"help_type"
+			],
+			[
+				"hel",
+				"help_dict〔variable〕"
+			],
+			[
+				"获取",
+				"获取武汉即时天气信息"
+			],
+			[
+				"API_",
+				"API_now"
+			],
+			[
+				"P",
+				"P\tTag"
+			],
+			[
+				"hi",
+				"history_list〔variable〕"
+			],
+			[
+				"wea",
+				"weather_dict"
+			],
+			[
+				"qu",
+				"query_time〔variable〕"
+			],
+			[
+				"q",
+				"query_time"
+			],
+			[
+				"loc",
+				"location"
+			],
+			[
+				"command",
+				"command_name"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"jupyter",
+				"jupyter-notebook"
+			],
+			[
+				"w2",
+				"w2d4_170819"
+			],
+			[
+				"cs",
+				"csvfile"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "2018-05-25-Py104-database-Cards.md",
+			"settings":
+			{
+				"buffer_size": 21,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "Syntax Check",
+	"command_palette":
+	{
+		"height": 126.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"comple",
+				"Anaconda: McCabe complexity check"
+			],
+			[
+				"git:",
+				"git: push"
+			],
+			[
+				"git:add ",
+				"git: diff cached"
+			],
+			[
+				"git:add .",
+				"Git: Add..."
+			],
+			[
+				"gitad",
+				"Git: Add All"
+			],
+			[
+				"dis",
+				"Anaconda: Display object docs"
+			],
+			[
+				"anag",
+				"Anaconda: Goto object definition"
+			],
+			[
+				"pep",
+				"Anaconda: Autoformat PEP8 Errors"
+			],
+			[
+				"i",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"git:com",
+				"git: commit"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				" git:diff",
+				"git: diff cached"
+			],
+			[
+				" git:add",
+				"Git: Add Current File"
+			],
+			[
+				"git:push",
+				"git: push"
+			],
+			[
+				"git:di",
+				"Git: Diff Current File"
+			],
+			[
+				"git:add",
+				"Git: Add Current File"
+			],
+			[
+				"g",
+				"git: log"
+			],
+			[
+				"l",
+				"git: log"
+			],
+			[
+				"GitSavvy: help",
+				"GitSavvy: help"
+			],
+			[
+				"Package in",
+				"Package Control: Install Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pc",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"gin",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: List Packages"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"floder",
+				"File: New Folder Relative to Project Root"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"t",
+				"Themr: Toggle Theme Settings"
+			]
+		],
+		"width": 430.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"if sublime.active_window().settings().get('fss_on_full_screen'):",
+			"import sublime",
+			"typewriter_typing_toggle",
+			"typewriter_mode_scrolling",
+			" cd python",
+			"python",
+			"cd /Users/NBR-hugh/Documents/github.nibirong.com/python",
+			"l's",
+			"Themr",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/NBR-hugh/Documents/github.nibirong.com",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/note",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/project"
+	],
+	"file_history":
+	[
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/project/test.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/project/2018-05-25-PY104-CH4-Database-Record.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/.gitignore",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-08-17-subl.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/weather_query_API.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/utils/command_func.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/API_deal.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/Day_Review_log_CH1.md",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/project/py104-ch4.sublime-project",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2018-05-15-Tool-CLI-AutoComplete.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/NBRmain/DuiSummary/2018-05-03-DAMA-PKM-L0.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/WeatherQueryWebAPP_Flask.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/static/css/index.css",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/templates/Index.html",
+		"/Users/NBR-hugh/Downloads/cssmenu/index.html",
+		"/Users/NBR-hugh/Downloads/cssmenu/styles.css",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/# 纪要.md",
+		"/Users/NBR-hugh/Desktop/时间管理之意识的战争.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/static/css/style.css",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/QueryHistory.txt",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py103/Chap4/project/templates/quote.html",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py103/Chap4/project/weather_web.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/weather_query_API.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/templates/Help.html",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/templates/History.html",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/NOTE.MD",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/utils/command_func.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py103/Chap5/project/venv/include/python3.5m/pgen.h",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-08-05-Spectacle.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/templates/HelpInfo.html",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-10-04-PythonEnv.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Writer004/ch3/2017-10-02-SimpleWritePracticeWay.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Writer004/ps/WRITE_TEMPLATE/4000_1w.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Writer004/ps/WRITE_TEMPLATE/2000.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Writer004/ps/WRITE_TEMPLATE/1000.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/README.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/DocumentTool.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-09-24-FFmpeg.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-09-23-zotero.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-09-28-gollum.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/du4proto/card/170926-Document",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-09-20-Dropbox.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-09-23-zotero.html",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/resource/README.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/python/python",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/weather_query.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/README.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/project/web_flask.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/requests_test.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/utils/const_value.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/API_deal.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap3/Day_review_log_CH3.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/Day_Review_log_CH2.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/utils/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Issue_draft/ch2_codeStructure.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/du4proto/project/TimeBill/du_s02e01_NBR-hugh.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-08-25-gmail.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Issue_draft/ch2_wechat_dama_reprecent.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/README.md",
+		"/Users/NBR-hugh/Documents/mac.nibirong.com/project/Debug Uself/2017-05-20-GmailSet.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/du4proto/card/2017-08-25-Gmia'l",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/du4proto.wiki/HandBooks/HbGmail4maillist.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Issue_draft/ch2_task_commit.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Issue_draft/ch2_mate_suggest.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap2/project/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/__init__.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/README.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/dict2function_test.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/csv_test.py",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/README_TEMPLATE.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Issue_draft/ch1_better_commond_query.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/Day_Review_log.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/weather_info.csv",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/.ignore",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Basic-Improvement/2017-08-14-anaconda&JupterNotebook.md",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/weather_info.txt",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap1/project/.ipynb_checkpoints/csv",
+		"/Users/NBR-hugh/Desktop/2017-08-17- subl.md",
+		"/Users/NBR-hugh/Desktop/untitled.py",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Themr/Default (OSX).sublime-keymap",
+		"/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap0/project/Test.txt",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Solarized Toggle/SolarizedToggle.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/User/SolarizedToggle.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Themr/ThemrFavorites.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/NBR-hugh/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"git",
+			"{"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "2018-05-25-Py104-database-Cards.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 21,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21,
+								21
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"git_savvy.repo_path": "/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004",
+							"syntax": "Packages/MarkdownEditing/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 65.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anaconda_documentation":
+	{
+		"height": 205.0
+	},
+	"output.exec":
+	{
+		"height": 120.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 104.0
+	},
+	"output.markdown":
+	{
+		"height": 132.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.show_commit_info":
+	{
+		"height": 117.0
+	},
+	"pinned_build_system": "",
+	"project": "py104ch4.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"l",
+				"Py101-004/Chap1/Day_Review_log_CH1.md"
+			],
+			[
+				"subl",
+				"Basic-Improvement/2017-08-17-subl.md"
+			],
+			[
+				"201subl",
+				"Basic-Improvement/2017-08-17-subl.md"
+			],
+			[
+				"p",
+				"Package Control Messages"
+			],
+			[
+				"gmail",
+				"mac.nibirong.com/project/Debug Uself/2017-05-20-GmailSet.md"
+			],
+			[
+				"",
+				"untitled"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 400.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 600.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"fss_on_distraction_free": false,
+		"fss_on_full_screen": false
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 172.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
