@@ -37,57 +37,76 @@
 - I 看看到python 的衍生文件与sublime 的布局结构文件,所以想设置 ignore 文件来清理仓库中的文件
     + A github help
         * => [Ignoring files - User Documentation](https://help.github.com/articles/ignoring-files/)
-        * I  **概念卡: Ignoring files**
-            - 功能: 
-                - 告诉 git 哪些文件应对被忽视,不被 check in 到 github
-            - 要点:
-                + **local .gitignore**
-                    * 应用于单个 git 仓库文件
-                    * 进入git仓库根目录,`touch .gitignore`
-                    * 添加相应规则
-                * **global .gitignore**
-                    * 应用于电脑上所有 git 仓库文件
-                    * 根目录创建 `~/.gitignore_global`
-                    * 添加相应规则
-                    * 激活设置文件
-                        * `git config --global core.excludesfile ~/.gitignore_global`
-                - **.git/info/exclude** 
-                    + 用于那些不希望与他人分享的 `.gitignore` 规则
-                        * 那些只希望本地生成,不希望其他用户生成的文件
-                            - 比如编辑器生成的文件 
-                            - 
-                    + 进入git仓库根目录,使用文本编辑器打开 `.git/info/exclude`
-                    + 添加相关规则
-            - 注意: 
-                + 已经被 check in 的文件无法被 `.gitignore` 忽视
-                + 必须取消追踪这些文件
-                    * git rm --cached FILENAME
-            - 资源:
-                + 一般必要的设置
-                    + [Some common .gitignore configurations](https://gist.github.com/octocat/9257657)
-                - 各种操作系统,语言,环境的. ignore 模板
-                    + [A collection of useful .gitignore templates
-](https://github.com/github/gitignore)
-            - 实操:
-                + A 设置全局的 .gitignore  
-                + A 清理 PY104 的仓库文件 
-                    * I 
-                    * 
-                + 
-    - A Google `github ignore`
-        - => [github/gitignore: A collection of useful .gitignore templates](https://github.com/github/gitignore) 
-            - 各种.ignore 的模板
-                - python
-                - jupyter-notebook
-                - sublime
-            - Q  pipenv 的 pipfile 和pipfile.lock 应该被隐藏吗?
-                + 这是原始文件,用于生成项目依赖环境,应当不用隐藏
-    + A 查看仓库文件是哪些需要隐藏的文件
-        * `__pycache__`
-        * `.sublime-project`
-        * `.sublime-worklplace`
 
+- O **概念卡: Ignoring files**
+    + 功能: 
+        + 告诉 git 哪些文件应对被忽视,不被 check in 到 github
+    + 要点:
+        * **local .gitignore**
+            - 应用于单个 git 仓库文件
+            - 进入git仓库根目录,`touch .gitignore`
+            - 添加相应规则
+        - **global .gitignore**
+            - 应用于电脑上所有 git 仓库文件
+            - 根目录创建 `~/.gitignore_global`
+            - 添加相应规则
+            - 激活设置文件
+                - `git config --global core.excludesfile ~/.gitignore_global`
+        + **.git/info/exclude** 
+            * 用于那些不希望与他人分享的 `.gitignore` 规则
+                - 那些只希望本地生成,不希望其他用户生成的文件
+                    + 比如编辑器生成的文件 
+                    + ...
+            * 进入git仓库根目录,使用文本编辑器打开 `.git/info/exclude`
+            * 添加相关规则
+    + 注意: 
+        * 已经被 check in 的文件无法被 `.gitignore` 忽视
+        * 必须取消追踪这些文件
+            - git rm --cached FILENAME
+    + 资源:
+        * 一般必要的设置
+            * [Some common .gitignore configurations](https://gist.github.com/octocat/9257657)
+        + 各种操作系统,语言,环境的. ignore 模板
+            * [A collection of useful .gitignore templates](https://github.com/github/gitignore)
 
+- A `.gitignore` 实操设置:
+    + A 设置全局的 .gitignore 
+        + Q .gitignore  应该写哪些内容?
+            + I 查看 仓库模板
+                * [zoom-quiet/scm: all kinds of SCM stuff](https://github.com/zoom-quiet/scm)
+                * [du4proto/.gitignore](https://github.com/DebugUself/du4proto/blob/DU_tools/.gitignore)
+                * [scm/.gitignore at master · zoom-quiet/scm](https://github.com/zoom-quiet/scm/blob/master/.gitignore)
+                * [Some common .gitignore configurations](https://gist.github.com/octocat/9257657)
+                * [gitignore/Python.gitignore at master · github/gitignore](https://github.com/github/gitignore/blob/master/Python.gitignore)
+                * [gitignore/SublimeText.gitignore at master · github/gitignore](https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore)
+        - O 选取 common + python + media + SublimeText 三个部分作为基础模板,以后根据实际具体需求进行删改
+            + 分析项目涉及的依赖/工具/语言...等等构件
+            + 查找相关 .gitignore 模板,参考对应构件的规则进行设置
+            + 编辑过程中要关注真实存在的文件,看是否有遗漏,进一步完善
+                * 指定文件后缀
+                    * `*.suffix`
+                * 指定文件名
+                    * `filename/` 文件包含的内容
+                    *  `/filename` 包含该文件的父级文件内容
+    * A 设置 py104 仓库的文件
+        * A 查看仓库文件是哪些需要隐藏的文件
+            - `__pycache__`
+            - `.sublime-project`
+            - `.sublime-worklplace`
+            - `.ipynb_checkpoints`
+        - Q  pipenv 的 pipfile 和pipfile.lock 应该被隐藏吗?
+            + 这是原始文件,用于生成项目依赖环境,应当不用隐藏
+            + 官方给出的[答案](https://docs.pipenv.org/basics/#general-recommendations-version-control)
+                * > Generally, keep both Pipfile and Pipfile.lock in version control.
+                * > Do not keep Pipfile.lock in version control if multiple versions of Python are being targeted.
+        * A 编辑 py104 仓库的`.gitignore`文件
+            *  python 模板 + sublimeText 模板
+        + A Check out `gitignore` 设置之前的的生成文件 
+            - I `git rm --cached FILENAME`
+                -  O `git rm -r --cached __pycache__/`
+                -  O `git rm -r --cached *.sublime-workspace`
+                -  O `git rm -r --cached *.sublime-project`
+            * 
 
 + A 重温 pipenv 的使用方法
     * Ref
