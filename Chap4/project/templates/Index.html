@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>WeatherQuery</title>
+</head>
+<style type="text/css">
+	.home-picture-well{
+		margin-left: auto; 
+		margin-right: auto;
+		margin-top: 8em;
+
+
+	}
+	.home-picture{
+		display: block; 
+		margin-left: auto; 
+		margin-right: auto; 
+
+		width: auto;
+		height: auto;
+	}
+
+	.input-area{
+		display: block; 
+		margin-left: auto; 
+		margin-right: auto; 
+		margin-top: 5%;
+
+		height: 3em;
+		width: 60%;
+	}
+/*
+ * Header
+ */
+	.inner{
+		padding: 2em;
+		margin-top: auto;
+		margin-bottom: auto;
+		background-color: black;
+
+
+
+	}
+	.masthead-brand {
+		margin-top: auto;
+		margin-bottom: auto;
+		font-family: fantasy;
+		font-weight: bold;
+		color:white;
+}
+/*
+顶部 nav 里的所有 li 元素
+*/
+	.masthead-nav > li {
+		display: inline-block;
+	}
+	.masthead-nav > li + li{
+		margin-left: 20px;
+	}
+	.masthead-nav > li > a{
+	font-weight: bold;
+	font-family: fantasy;
+	color:white;
+
+	}
+
+/*
+帮助与历史功能的按钮
+*/
+
+	.function-botton-well{
+		margin-top: 2em;
+		margin-left: auto;
+		margin-right: auto;
+
+		width:60%;
+	}
+
+	.assist-button{
+		margin-left: auto;
+		margin-right: auto;
+
+		width:50%;
+	}
+
+	.ft-color{
+		font-family: fantasy;
+		color: gray;
+	}
+
+	.info-showed-well{
+		margin-top:2em;
+		margin-left: auto;
+		margin-right: auto;
+
+		width:60%;
+
+	}
+
+	.footer{
+    position: fixed;
+    bottom: 0;
+
+    background-color: black;
+    width: 100%;
+    padding-left: 35%;
+    padding-top: 1em;
+
+	}
+
+
+	@media (min-width: 600px) {
+  		.masthead-brand {
+   			float: left;
+  		}
+		.masthead-nav {
+			float: right;
+		}
+	}
+
+	@media (max-width: 600px){
+		.home-picture{
+			width: 400px;
+		}
+	}
+
+
+</style>
+
+<body>
+
+	<div class="inner" >
+		<h5 class="masthead-brand">WeatherQuery</h5>
+		<nav>
+			<ul class="nav masthead-nav">
+			  <li class="active"><a href="#">About</a></li>
+			  <li><a href="#">User</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class='main-wall'>
+		<div class="home-picture-well">
+			<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fpjg4a48fnj30fu03cjra.jpg" alt="No" class="home-picture">
+		</div>
+
+		<div class="query-well">
+			<form action="/" method="post">
+				<input type="text" name="input_text" class="input-area" placeholder="Please input the city name">
+			</form>
+		</div>
+
+		<div class="function-botton-well">
+			<form action="/" method="post" class="assist-button">
+				<input type="submit" name="history" value="history" class="btn btn-block btn-light ft-color"> 
+				<input type="submit" name="help" value="help" class="btn btn-block btn-light ft-color">
+			</form>
+		</div>
+
+		<div class="info-showed-well alert alert-dark">
+		    <pre> {{ DisplayInfo }}</pre>
+		</div>
+
+		<div class="footer">
+
+              <p class="ft-color">The website created by <a href="[NBR-hugh (nibirong)](https://github.com/NBR-hugh)">@NBR-hugh</a></p>
+        </div>
+
+	</div>
+</body>
+</html>
+
+
