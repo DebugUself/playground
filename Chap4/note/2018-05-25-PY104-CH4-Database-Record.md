@@ -40,7 +40,7 @@
 
 - O **概念卡: Ignoring files**
     + 功能: 
-        + 告诉 git 哪些文件应对被忽视,不被 check in 到 github
+        + 告诉 git 哪些文件应该被忽视,不被 check in 到 github
     + 要点:
         * **local .gitignore**
             - 应用于单个 git 仓库文件
@@ -106,7 +106,10 @@
                 -  O `git rm -r --cached __pycache__/`
                 -  O `git rm -r --cached *.sublime-workspace`
                 -  O `git rm -r --cached *.sublime-project`
-            * 
+        +  A `git push`
+            *  检查相关文件是否被删除
+                -  O 当面仓库无删除文件
+                -  O 历史仓库无当前文件
 
 + A 重温 pipenv 的使用方法
     * Ref
@@ -144,9 +147,39 @@
         * 一次更新单个包
             - `$ pipenv update <pkg>`
 
-* A 在 CH4 文件夹部署虚拟环境
+* A 在 CH4 文件夹部署虚拟环境 2018-09-06 09:42
+    - A 清理原来文件
+    - A 迁移 CH3 内容,确定依赖于 python 版本 : requirement
+        + X 没有 requirement.txt,
+        + O 可以直接复制 pipfile 与 pipfile.lock 迁移开发环境
+        + O 检查 python 版本,检查依赖
+    ```bash
+    ➜  project git:(master) ✗ ls
+    Pipfile      Pipfile.lock README.md    test.py
+    ➜  project git:(master) ✗ pipenv shell
+    Spawning environment shell (/bin/zsh). Use 'exit' to leave.
+    . /Users/NBR-hugh/.local/share/virtualenvs/project-efWUULjV/bin/activate
+    ➜  project git:(master) ✗ . /Users/NBR-hugh/.local/share/virtualenvs/project-efWUULjV/bin/activate
+    (project-efWUULjV) ➜  project git:(master) ✗ python --version
+    Python 3.6.5
+    (project-efWUULjV) ➜  project git:(master) ✗ pipenv graph
+    Flask==0.12.2
+      - click [required: >=2.0, installed: 6.7]
+      - itsdangerous [required: >=0.21, installed: 0.24]
+      - Jinja2 [required: >=2.4, installed: 2.10]
+        - MarkupSafe [required: >=0.23, installed: 1.0]
+      - Werkzeug [required: >=0.7, installed: 0.14.1]
+    requests==2.18.4
+      - certifi [required: >=2017.4.17, installed: 2018.1.18]
+      - chardet [required: >=3.0.2,<3.1.0, installed: 3.0.4]
+      - idna [required: <2.7,>=2.5, installed: 2.6]
+      - urllib3 [required: <1.23,>=1.21.1, installed: 1.22]
+    ```
 
+- A 迁移具体代码 
+    + 
 
 ##  TL
 
-- 180525 NBR-hugh `4T` init
+- 180602 `4T` NBR-hugh add gitignore
+- 180525 `4T` NBR-hugh  init
