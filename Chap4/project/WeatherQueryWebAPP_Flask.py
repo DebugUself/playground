@@ -38,6 +38,7 @@ def index_func(DisplayInfo=None):  # 函数名用于生成url,并返回想要呈
 
     # 功能3:历史
     elif 'history' in request.form.keys():
+        query_history =open('QueryHistory.txt','r')
         history_info = query_history.read()
         return render_template('Index.html', DisplayInfo=history_info)
 
@@ -54,6 +55,7 @@ def help_func():
         - 点击" history"按钮,显示查询历史.
                """
     return help_info
+
 
 
 if __name__ == '__main__':

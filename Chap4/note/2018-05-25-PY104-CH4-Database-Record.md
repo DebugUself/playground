@@ -26,11 +26,11 @@
 
 ## 路线
 
-* 查看以往代码,梳理工作原理与数据流
-    * 迁移相关代码,完成基本工具的 DEMO
-* 数据存储格式的讨论
-    * 直接拉取单次 API 查询
-    * 将整个文件拉取到本地 ,固定时间轮询更新,用户查询直接在本地
+* [ ] 查看以往代码,梳理工作原理与数据流
+    * [ ] 迁移相关代码,完成基本工具的 DEMO
+* [ ] 数据存储格式的讨论
+    * [ ] 直接拉取单次 API 查询
+    * [ ] 将整个文件拉取到本地 ,固定时间轮询更新,用户查询直接在本地
 
 ## 探索记录
 
@@ -38,9 +38,11 @@
     + A github help
         * => [Ignoring files - User Documentation](https://help.github.com/articles/ignoring-files/)
 
+## 0 Ignoring files 概念与实操
+
 - O **概念卡: Ignoring files**
     + 功能: 
-        + 告诉 git 哪些文件应该被忽视,不被 check in 到 github
+        + 告诉 git 哪些文件应该被忽视,不被 check in 到 github 远程仓库
     + 要点:
         * **local .gitignore**
             - 应用于单个 git 仓库文件
@@ -111,6 +113,8 @@
                 -  O 当面仓库无删除文件
                 -  O 历史仓库无当前文件
 
+## 1 原代码迁移
+
 + A 重温 pipenv 的使用方法
     * Ref
         * => [Basic Usage of Pipenv — pipenv 2018.05.18 documentation](https://docs.pipenv.org/basics/)
@@ -176,10 +180,243 @@
       - urllib3 [required: <1.23,>=1.21.1, installed: 1.22]
     ```
 
-- A 迁移具体代码 
+- A 迁移具体代码,运行ch3 代码
+    +  A 本地运行 flask 
+    +  X 失败,报错
+
+- E builtins.IndentationError
+    ```
+    builtins.IndentationError
+    File "/Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/project/WeatherQueryWebAPP_Flask.py", line 42
+        return render_template('Index.html', DisplayInfo=history_info)
+                                                                     ^
+    IndentationError: unindent does not match any outer indentation level
+    ```
+    - O  缩进错误,没有注意多缩进了一格,已解决
+
+- E ModuleNotFoundError
+    - ModuleNotFoundError: No module named 'API_deal'
+    - O root 目录下不能放置 `__init__.py` 文件
+    - O 绝对引用与相对引用混杂,导致代码运行失败
+    - O 删除了 root 目录的 `__init__.py` ,统一使用 绝对引用,错误解除
+
+- X Import 机制 理解不到位
+    + [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
+
+- O **概念卡: python Import 机制**
+    + REF
+        * [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
+    + demo
+        ```
+        test/                      # root folder
+            packA/                 # package packA
+                subA/              # subpackage subA
+                    __init__.py
+                    sa1.py
+                    sa2.py
+                __init__.py
+                a1.py
+                a2.py
+            packB/                 # package packB (implicit namespace package)
+                b1.py
+                b2.py
+            math.py
+            other.py
+            start.py
+        ```
+    - 注意:  we do not place a `__init__.py` file in our root `test/` folder.
+    - 基础概念
+
+#### 反思
+
+- R => 反思与推进 2018-09-06 14:02
+    + 记录所有操作与思考,一悬空就容易走神与卡壳
+    + 重整项目骨架,重整模块命名,重新厘清 python import 机制
+
+
+- X 项目骨架不规范,重整骨架 2018-09-06 15:28 
+    + REF
+        * [learn-python3-the-hard-way-jul-4-2017.pdf](https://program.bruintech.org/wp-content/uploads/2018/01/learn-python3-the-hard-way-jul-4-2017.pdf) ex46
+        * [pallets/flask-website: The Flask website, built with Flask!](https://github.com/pallets/flask-website)
+        * [Structuring Your Project — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/)
+        * [coding style - What is the best Python library module skeleton code? - Stack Overflow](https://stackoverflow.com/questions/2387272/what-is-the-best-python-library-module-skeleton-code)
+        * O hardway 的测试模块时失效的,选择深入 Hitchhiker 的指南
+    + O 创建项目骨架
+        ```
+        README.rst
+        LICENSE
+        setup.py
+        requirements.txt
+        sample/__init__.py
+        sample/core.py
+        sample/helpers.py
+        docs/conf.py
+        docs/index.rst
+        tests/test_basic.py
+        tests/test_advanced.py
+        ```
+    - X  有很多当然任务用不上的部分,不太看得懂
+    - A  把仓库拉取下来,弄懂每个部分的功能作用
+
+#### 反思
+
+- R => 卡顿,反思与推动
+    + 过多的信息会导致行动瘫痪,番茄钟内必须给出2次自己的判断
+    + 过多问题混杂也是如此
+        * 如何解决 原来 ch3 的 import moudle 错误,进而深入理解 import 机制.
+        * 怎样的仓库架构是合理的? 是最佳的?
+    + 一个个来,不要空想,自己的判断,打字的手不能停.
+
+
+- O **金句卡**
+    + > Dress for the job you want, not the job you have.
+    + from: [Structuring Your Project — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/#license)
+
+- O 本地运行 flask 成功 2018-09-06 18:27
+
+
+
+#### 反思
+
+- R => 推进 2018-09-06 18:29
+    + 不要去追求体系,不停止地探索中训练自己的姿势与反应,一个个知识点弄清楚,逐个攻破,从而建立起自己的体系
+    -  text 撰写 概念卡: python import 机制 1T
+        +  [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
+    -  text 撰写 技巧卡: python 项目仓库的文件结构 1T
+        +  [Structuring Your Project — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/#license)
+    -  code 正式开发 数据库 完成一次 增删查改   
+    -  text 使用 python 写测试代码
+        +  [Testing Your Code — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
+    -  text 代码规范规约
+        +  [A "Best of the Best Practices" (BOBP) guide to developing in Python.](https://gist.github.com/sloria/7001839)
+
+-  I 重新厘定目标 4T
+    + 利用数据库存储数据
+    + 基础概念,基础操作,功能代码段  
+
+## 代码规范
+
+- I 代码规范
+    + 长注释
+        * 摘要行
+        * 用例(如果需要)
+        * 变量
+        * 返回的数据类型与数据含义
+
+```
+"""Train a model to classify Foos and Bars.
+
+Usage::
+
+    >>> import klassify
+    >>> data = [("green", "foo"), ("orange", "bar")]
+    >>> classifier = klassify.train(data)
+
+:param train_data: A list of tuples of the form ``(color, label)``.
+:rtype: A :class:`Classifier <Classifier>`
+"""
+```
+
+ 
+## 建立数据库基本概念 2018-09-07 10:08
+
+- I 什么是数据库?
+    + > A database is a collection of information that is organized so that it can be easily accessed, managed and updated.
+    + I 更易于操作,管理与更新的信息组织形式
+
+- I 常见数据库排行
+    + [DB-Engines Ranking - popularity ranking of database management systems](https://db-engines.com/en/ranking)
+
+- I SQL(Structured Query Language)
+    +  REF
+        *  [SQL syntax - Wikipedia](https://en.wikipedia.org/wiki/SQL_syntax
+    +  定义
+        *  关系型数据库标准查询语言
+    +  元素
+        *  Clauses
+            - > constituent components of statements and queries
+            -  语句与查询的组成部分
+        *  Expressions
+            - > produce either scalar values, or tables consisting of columns and rows of data
+            - 生成变量,或者生成含有多行多列数据的表
+        *  Predicates
+            -  > which specify conditions that can be evaluated to SQL three-valued logic (3VL) (true/false/unknown) or Boolean truth values and are used to limit the effects of statements and queries, or to change program flow.
+            -  条件判定,限定条件: SQL 3VL 计算,布隆值
+            -  限制语句与查询的条件,修或改程序流程
+        *  Queries
+            -  > retrieve the data based on specific criteria.
+            -  根据某些条件寻找数据
+        *  Statements
+            -  >  may have a persistent effect on schemata and data, or may control transactions, program flow, connections, sessions, or diagnostics.
+            -  持续作用于数据与数据组织
+            -  数据库管理系统对数据库的单元操作,程序流,连接,会话,诊断
+        *  Insignificant whitespace 
+            -  无意义空白
+            -  可以根据可读性任意调整
+    +  实践练习
+        *  [SQL Exercises, Practice, Solution - w3resource](https://www.w3resource.com/sql-exercises/)
+
++ I CRUD
+    *  create, read, update and delete ，four basic functions of persistent storage
+- I ORM
+    +  Object Relation Mapping
+
+- I SQL three-valued logic (3VL) (true/false/unknown)
+
+- I 数据库的核心概念?
+    + [Databases — The Hitchhiker's Guide to Python](https://docs.python-guide.org/scenarios/db/)
+
+- I 通过 python 使用关系型数据库
+    + [Using Relational Databases with Python](http://halfcooked.com/presentations/osdc2006/python_databases.html)
+    + 
+
+- I 层级
+    + 数据库
+        * 数据集合
+            - [Database - Wikipedia](https://en.wikipedia.org/wiki/Database#Models)
+    * 数据库管理系统
+        - [Relational database management system - Wikipedia](https://en.wikipedia.org/wiki/Relational_database_management_system)
+        - 关系型数据库
+            + MySQL, PostgreSQL, Oracle、Microsoft SQL Server,SQLite
+            + 免费: MySQL,PostgreSQL,SQLite
+        - 非关系型数据库
+            + MongoDB, Redis, CouchDB
+    +  数据库交互语言
+        *   SQL (使用与关系型)
+    +  数据库交互方式                  
+        * CRUD
+        * ORM
+    +  python 与数据库
+        *   API 接口 : [PEP 249 -- Python Database API Specification v2.0 | Python.org](https://www.python.org/dev/peps/pep-0249/)
+        *   基于接口的模块:
+            - 与 SQLite 交互
+                + [12.6. sqlite3 — DB-API 2.0 interface for SQLite databases — Python 3.7.0 documentation](https://docs.python.org/3/library/sqlite3.html)
+            - ORM 的模块  [Databases — The Hitchhiker's Guide to Python](https://docs.python-guide.org/scenarios/db/)
+
+- A 业务
+    + 获取 API 的返回文件,提取有效信息
+    + 通过 sqlite3 与 SQL 配合 CRUD 数据
+    +  API -> JOSN -> variables -> db -> opration/value -> web -> prompt / new value
+        *  opration: CRUD
+        *  value: city,wheather,time
+
+- Q  什么时候用 class, 什么时候用 function?
+    - REF
+        - [class - Classes vs. Functions - Stack Overflow](https://stackoverflow.com/questions/18202818/classes-vs-functions)
+    > Functions do specific things, classes are specific things.
+
+- Q 数据应该一条条拉取,还是一次性全部拉取?
+    +  O 一次性,2个原因
+        *  网络延迟的等待时间叠加,影响用户体验
+        *  多个用户同时查询一条信息,操作过多
+
+- Q 如何一次拉取所有城市天气信息到本地?
     + 
 
 ##  TL
 
+
+- 180906 `2h30m` NBR-hugh add 仓库文件结构探索 & import 机制探索
+- 180906 `3h05m` NBR-hugh 迁移复用原代码
 - 180602 `4T` NBR-hugh add gitignore
 - 180525 `4T` NBR-hugh  init

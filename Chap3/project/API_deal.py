@@ -1,4 +1,5 @@
 import requests
+
 from .utils.const_value import API_NOW, KEY, LANGUAGE, \
     API_DAILY, START, DAYS, \
     OWM_API, OWM_APIKEY, OWM_ID
