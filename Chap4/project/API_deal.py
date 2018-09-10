@@ -92,8 +92,38 @@ def get_response(params, API):
 def josn_now_deal(unit, weather_josn):
     """
     将 nowAPI 响应转化成用户所见信息
+
+    JOSN Example:
+
+    {
+        'results': 
+            [{
+                'location': {
+                            'id': 'WS10730EM8EV', 
+                            'name': '深圳', 
+                            'country': 'CN', 
+                            'path': '深圳,深圳,广东,中国', 
+                            'timezone': 'Asia/Shanghai', 
+                            'timezone_offset': '+08:00'
+                            }, 
+                'now': {
+                        'text': '阴', 
+                        'code': '9', 
+                        'temperature': '28'
+                        }, 
+                'last_update': '2018-09-10T09:25:00+08:00'
+            }]
+    }
+
+    Display Info Example:
+
+    城市:深圳
+    天气:阴
+    温度:28 °C
+
     """
     # 提取 API 信息
+    print(weather_josn)
     city = weather_josn['results'][0]['location']['name']
     city_weather = weather_josn['results'][0]['now']['text']
     city_temp_c = weather_josn['results'][0]['now']['temperature']
