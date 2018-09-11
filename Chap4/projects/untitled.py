@@ -17,7 +17,6 @@ import requests
 from const_value import API_NOW, KEY, LANGUAGE
 
 
-
 import sqlite3
 
 
@@ -53,6 +52,24 @@ class SeniverseWeatherAPI():
         """Judge that if request weather info succeed
         response: a object
         api_info: a dict
+            weather info dict:
+
+            {'results':
+                    [{'location': {'id': 'WT3Q0FW9ZJ3Q',
+                                    'name': '武汉',
+                                    'country': 'CN',
+                                    'path': '武汉,武汉,湖北,中国',
+                                    'timezone': 'Asia/Shanghai',
+                                     'timezone_offset': '+08:00'},
+                            'now': {'text': '多云',
+                                    'code': '4',
+                                    'temperature': '28'},
+                    'last_update': '2018-09-11T11:25:00+08:00'}]}
+
+            error dict:
+
+            {'status': 'The location can not be found.',
+            'status_code': 'AP010010'}
         """
         response = self.get_response()
 
@@ -94,9 +111,8 @@ class WeatherDatabase():
         self.weather_type = weather_now['text']
         self.temp = weather_now['temperature']
         self.code = weather_now['code']
-        #self.row = (date, city, weather_type, temp, code)
-        #print (self.row)
 
+        self.table_name = 'city_weather_now'
         self.create_table = '''
                             CREATE TABLE IF NOT EXISTS
                                 city_weather_now(date date,
@@ -105,29 +121,39 @@ class WeatherDatabase():
                                                 temp char,
                                                 code tinyint)
                             '''
+
+        self.row = (self.date, self.city,
+                    self.weather_type, self.temp, self.code)
         self.insert_row = '''
                             INSERT INTO city_weather_now
-                            VALUES(?,?,?.?,?)
+                            VALUES(?,?,?,?,?)
                           '''
 
-    def singl_operation(self):
-        sql_commands = self.insert_row
-        info = (self.date, self.city, self.weather_type, self.temp, self.code)
-        print (info)
+    def singl_operation(self, sql_commands, variable):
+        """Execute a single database(SQLite) opeantion
+        sql_comnads: a str,a single SQL statement(without ; )
+        variable: a truple,table name/ clomuns name/ a insert raw..
+        """
         print(sql_commands)
         conn = sqlite3.connect('weather.db')
         c = conn.cursor()
-        c.execute( 'INSERT INTO city_weather_now VALUES(?,?,?,?,?)',('2018-09-11T10:05:00+08:00', '武汉', '多云', '27', '5'))
+        c.execute(sql_commands, variable)
         conn.commit()
         conn.close()
 
+    def insert_a_row_weather(self):
+        sql_commands = self.insert_row
+        variable = self.row
+        self.singl_operation(sql_commands, variable)
+        print(">> insert ok !")
+
 
 if __name__ == '__main__':
-    api = SeniverseWeatherAPI("武汉", "unit")
+    api = SeniverseWeatherAPI("四川", "unit")
     api_info = api.judge_response()
     print(api_info)
     date, city, weather_now = api.pick_weather_now(api_info)
     print(date, city, weather_now)
 
     db = WeatherDatabase(date, city, weather_now)
-    db.singl_operation()
+    db.insert_a_row_weather()
