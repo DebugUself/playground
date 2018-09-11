@@ -16,7 +16,6 @@ import requests
 
 from const_value import API_NOW, KEY, LANGUAGE
 
-
 import sqlite3
 
 
@@ -116,14 +115,13 @@ class WeatherDatabase():
         self.code = weather_now['code']
 
         # 创建一个 table
-        self.table_name = 'city_weather_now'
         self.create_table = '''
-                            CREATE TABLE IF NOT EXISTS
-                                city_weather_now(date date,
-                                                city char,
-                                                type char,
-                                                temp char,
-                                                code tinyint)
+                            CREATE TABLE IF NOT EXISTS city_weather_now (
+                                                        date date,
+                                                        city char,
+                                                        type char,
+                                                        temp char,
+                                                        code tinyint)
                             '''
 
         # 加入一行的天气信息
@@ -136,14 +134,23 @@ class WeatherDatabase():
 
         # 根据城市获取天气信息
         self.select_rows = '''
-                            SELECT date, city, type, temp , code
+                            SELECT DISTINCT date, city, type, temp , code
                             FROM city_weather_now
-                            WHERE city = ? 
+                            WHERE city = ?
+                            GROUP BY date
+                            '''
+
+        # 更新天气信息
+        self.update_variable = (type, city)
+        self.update_rows = '''
+                            UPDATE city_weather_now
+                            SET    type = ?
+                            WHERE city = ?
                             '''
 
     def single_operation_to_db(self, sql_commands, variable):
         """Execute a single  opeantion to database(SQLite): add,delete,update
-        sql_comnads: a str,a single SQL statement(without ; )
+        sql_commands : a str,a single SQL statement(without ; )
         variable: a truple,table name/ clomuns name/ a insert raw..
         """
         print(">>>SQL 命令:", sql_commands)
@@ -153,30 +160,61 @@ class WeatherDatabase():
 
         if 'SELECT' in sql_commands:
             select_result = c.fetchall()
-            print(""">>>  IF 显示选取内容:""", select_result)
+            print(">>> 显示 SELECT 内容:", select_result)
             return select_result
+        elif 'UPDATE' in sql_commands:
+            update_result = c.fetchall()
+            print(">>> 显示 UPDATE 内容:", update_result)
+        else:
+            print(">>> 没有 SELECT 与 UPDATE 内容 ")
 
         conn.commit()
         conn.close()
         print('>>> 数据库单次操作成功!')
 
+    def creat_weather_table(self):
+        print(">>> 开始 创建 now whearher table 创建")
+        sql_commands = self.create_table
+        variable = ()
+        print(variable)
+        self.single_operation_to_db(sql_commands, variable)
+        print(">>> 完成 当前天气信息 table 创建")
+
     def insert_a_row_weather(self):
         print(">>> 开始 insert 天气信息")
         sql_commands = self.insert_row
-        variable = self.row
+        variable = (self.date,
+                    self.city,
+                    self.weather_type,
+                    self.temp,
+                    self.code)
         self.single_operation_to_db(sql_commands, variable)
-        print(">> insert ok !")
+        print(">> 完成 insert 天气信息")
 
     def select_by_city(self, city):
         print(">>> 开始 select 天气信息")
 
         sql_commands = self.select_rows
         variable = (city,)
-        print("选取城市:", city)
-        select_result =  self.single_operation_to_db(sql_commands, variable)
-        print(">> select ok !")
+        select_result = self.single_operation_to_db(sql_commands, variable)
+        print(">> 完成 select 天气信息 ")
 
         return select_result
+
+    def update_by_city(self, city, type):
+        print(">>> 开始根据城市名称更新天气信息")
+        variable = (type, city)
+        sql_commands = self.update_rows
+        self.single_operation_to_db(sql_commands, variable)
+        print(">>> 完成根据城市名称更新天气信息")
+
+    def display_whole_table(self):
+        sql_commands ='SELECT * FROM city_weather_now'
+        variable = ()
+        table_content = self.single_operation_to_db(sql_commands, variable)
+
+        return table_content
+
 
 
 if __name__ == '__main__':
@@ -187,6 +225,12 @@ if __name__ == '__main__':
     print(date, city, weather_now)
 
     db = WeatherDatabase(date, city, weather_now)
+    db.creat_weather_table()
     db.insert_a_row_weather()
+
     select_result = db.select_by_city('重庆')
-    print(">>> Select 返回结果:",select_result)
+    print(">>> Select 返回结果:", select_result)
+
+    db.update_by_city('暴雨', '重庆')
+    table_content = db.display_whole_table()
+    print ('>>> table_content:',table_content)
