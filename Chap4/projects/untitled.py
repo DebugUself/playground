@@ -148,6 +148,11 @@ class WeatherDatabase():
                             WHERE city = ?
                             '''
 
+        self.sql_delete_by_city='''
+                                DELETE FROM city_weather_now
+                                WHERE  city= ?
+                                '''
+
     def single_operation_to_db(self, sql_commands, variable):
         """Execute a single  opeantion to database(SQLite): add,delete,update
         sql_commands : a str,a single SQL statement(without ; )
@@ -168,6 +173,13 @@ class WeatherDatabase():
         conn.commit()
         conn.close()
         print('>>> 数据库单次操作成功!')
+
+    def display_now_weather_table(self):
+        sql_commands = 'SELECT * FROM city_weather_now'
+        variable = ()
+        table_content = self.single_operation_to_db(sql_commands, variable)
+
+        return table_content
 
     def creat_weather_table(self):
         print(">>> 开始 创建 now whearher table 创建")
@@ -200,21 +212,18 @@ class WeatherDatabase():
 
     def update_by_city(self, type, city):
         print(">>> 开始根据城市名称更新天气信息")
-        variable = (type, city)
         sql_commands = self.update_rows
+        variable = (type, city)
         self.single_operation_to_db(sql_commands, variable)
         print(">>> 完成根据城市名称更新天气信息")
 
-    def display_now_weather_table(self):
-        sql_commands = 'SELECT * FROM city_weather_now'
-        variable = ()
-        table_content = self.single_operation_to_db(sql_commands, variable)
-
-        return table_content
-
+    def delete_by_city(self,city):
+        sql_commands = self.sql_delete_by_city
+        variable = (city,)
+        self.single_operation_to_db(sql_commands, variable)
 
 if __name__ == '__main__':
-    api = SeniverseWeatherAPI("重庆", "unit")
+    api = SeniverseWeatherAPI("上海", "c")
     api_info = api.judge_response()
     print(api_info)
     date, city, weather_now = api.pick_weather_now(api_info)
@@ -226,9 +235,10 @@ if __name__ == '__main__':
 
     db.update_by_city('暴雨', '重庆')
 
-
     select_result = db.select_by_city('重庆')
     print(">>> Select 返回结果:", select_result)
 
     table_content = db.display_now_weather_table()
     print ('>>> table_content:', table_content)
+
+    db.delete_by_city('重庆')
