@@ -393,29 +393,147 @@ Usage::
                 + [12.6. sqlite3 — DB-API 2.0 interface for SQLite databases — Python 3.7.0 documentation](https://docs.python.org/3/library/sqlite3.html)
             - ORM 的模块  [Databases — The Hitchhiker's Guide to Python](https://docs.python-guide.org/scenarios/db/)
 
-- A 业务
-    + 获取 API 的返回文件,提取有效信息
-    + 通过 sqlite3 与 SQL 配合 CRUD 数据
-    +  API -> JOSN -> variables -> db -> opration/value -> web -> prompt / new value
-        *  opration: CRUD
-        *  value: city,wheather,time
 
 - Q  什么时候用 class, 什么时候用 function?
     - REF
         - [class - Classes vs. Functions - Stack Overflow](https://stackoverflow.com/questions/18202818/classes-vs-functions)
     > Functions do specific things, classes are specific things.
 
+
+## 开发思考
+
+- A 业务
+    + 获取 API 的返回文件,提取有效信息
+    + 通过 sqlite3 与 SQL 配合 CRUD 数据
+    +  API -> JOSN -> variables -> db -> opration/value -> web -> prompt / new value
+        *  opration: CRUD
+        *  value: city,{wheather:tmp,type...},time
+            -  从今日此时期,之前的数据就基本对用户无用了
+            -  日期 + 城市 定维 天气信息
+
+- Q **程序核心操作,数据,以及对象?** 
+    + 数据: 
+        +  内容: city,{wheather:tmp,type...},time
+        +  格式: dict,JSON,database,variable, file
+        +  过程:
+            + params -> dict -> url
+            * url -> API -> JSON
+            * JSON -> python[]提取 -> dict
+            * variable -> SQL -> database
+            * database <-> SQL / sqlite3 <->  variable on serve
+            * variable on serve <-> flask/html(css/javascript)  <-> variable on browser
+            * browser -> history -> text file
+    + 对象与操作:
+        * 彩云 API
+            - 请求 url 所需参数
+                + 不同 API 接口所需变量不同
+                + dict
+            - 发送 API request
+                + 成功
+                + 失败
+            - 接收 API response
+                + 成功
+                + 失败
+            - 处理 response 返回的 JOSN
+                + 提取 JOSN 有效信息
+                + 构造 天气信息 字典
+        * Flask Web 框架
+            - 接收 客户端功能请求:
+                - 按钮:帮助,查询,历史,欢迎,更改
+                - 输入:查询,更改
+            - 返回 展示信息
+        * SQLite database 数据库
+            -  存储数据
+            -  更新数据
+            -  提取数据
+
+
 - Q 数据应该一条条拉取,还是一次性全部拉取?
-    +  O 一次性,2个原因
+    +  O 应当一次性拉取,2个原因
         *  网络延迟的等待时间叠加,影响用户体验
         *  多个用户同时查询一条信息,操作过多
 
 - Q 如何一次拉取所有城市天气信息到本地?
     + 
 
+
+- A 重新实现 API 
+    + A 使用类来实现 API 
+
+- Q 如何写 python 类? 
+    + 注意点
+    + 最佳实践
+
+- Q 如何可视化 db 文件
+    + 用编辑器打开`*.db`文件是一串二进制数字?
+    + [How to Open a Database File (.DB File) on PC or Mac - wikiHow](https://www.wikihow.tech/Open-a-Database-File-on-PC-or-Mac)
+    + [DB Browser for SQLite](http://sqlitebrowser.org/)
+        * 下载 
+        - `$ brew cask install db-browser-for-sqlite`
+
+## 2018-09-11 08:01 重新梳理混乱思绪
+
+- I 开发路径图
+    + [X] 重构 API 2018-09-10 
+        * 抽离业务逻辑
+        * 将数据与操作组合成类
+    + [ ] 完成数据库的增删查改
+        + 能够存储单条信息
+        + 能够存储批量信息
+    - [ ] 将作品迁移如怼圈,以求获得及时反馈
+        - [ ] 今日午饭后 1T
+    + [ ] 卡片教程撰写
+        -  text 撰写 概念卡: python import 机制 1T
+            +  [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
+        -  text 撰写 技巧卡: python 项目仓库的文件结构 1T
+            +  [Structuring Your Project — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/#license)
+        -  text 使用 python 写测试代码
+            +  [Testing Your Code — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
+        -  text 代码规范规约
+            +  [A "Best of the Best Practices" (BOBP) guide to developing in Python.](https://gist.github.com/sloria/7001839)
+    *  [ ]基础疑问长考
+        -   如何写 python 中的类?
+            +  基本的 demo ,
+            +  变形
+            +  延伸
+                *  父类/基类
+                *  多态与继承
+        -  我自己的开发 mvp 节奏是什么? 能否以文字形式表述出来?
+
+- I 发现自己从重复犯错误,汇总反思
+    - - R => 推进 2018-09-06 18:29
+        + 不要去追求体系,不停止地探索中训练自己的姿势与反应,一个个知识点弄清楚,逐个攻破,从而建立起自己的体系
+        -  text 撰写 概念卡: python import 机制 1T
+            +  [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
+        -  text 撰写 技巧卡: python 项目仓库的文件结构 1T
+            +  [Structuring Your Project — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/structure/#license)
+        -  code 正式开发 数据库 完成一次 增删查改   
+        -  text 使用 python 写测试代码
+            +  [Testing Your Code — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
+        -  text 代码规范规约
+            +  [A "Best of the Best Practices" (BOBP) guide to developing in Python.](https://gist.github.com/sloria/7001839)
+    - - R => 卡顿,反思与推动
+        + 过多的信息会导致行动瘫痪,番茄钟内必须给出2次自己的判断
+        + 过多问题混杂也是如此
+            * 如何解决 原来 ch3 的 import moudle 错误,进而深入理解 import 机制.
+            * 怎样的仓库架构是合理的? 是最佳的?
+        + 一个个来,不要空想,自己的判断,打字的手不能停.
+
+    - R => 反思与推进 2018-09-06 14:02
+        + 记录所有操作与思考,一悬空就容易走神与卡壳
+        + 重整项目骨架,重整模块命名,重新厘清 python import 机制
+* O  顽固错误
+    - 0 没有记录,多方向多方案的持续空想,无法验证想法的正确性,盲目搜索信息
+        + 每个番茄都是一次提醒:
+            * 你在做什么? 你在完成什么? 
+            * 你完成了什么? 你确定或者明白了什么?
+            * 为了完成任务里还有 哪些需要明白的
+    - 1 对小任务事项没有时间与效果判定,未完成便搁置,半途重新开启一项任务,导致多任务中郁结
+
 ##  TL
 
 
+- 180908 `2h` NBR-hugh add 数据库&SQL 基本探索 & 程序基本结构思考
 - 180906 `2h30m` NBR-hugh add 仓库文件结构探索 & import 机制探索
 - 180906 `3h05m` NBR-hugh 迁移复用原代码
 - 180602 `4T` NBR-hugh add gitignore
