@@ -93,7 +93,7 @@ def josn_now_deal(unit, weather_josn):
     """
     将 nowAPI 响应转化成用户所见信息
 
-    JOSN Example:
+    weather_josn Example:
 
     {
         'results': 
@@ -138,6 +138,7 @@ def josn_now_deal(unit, weather_josn):
              城市:{city}
              天气:{city_weather}
              温度:{city_temp_c} {temp_unit}
+             更新日期:{update_time}
              """
     print(Display_weather)
 

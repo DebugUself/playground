@@ -48,6 +48,7 @@ def index_func(DisplayInfo=None):  # 函数名用于生成url,并返回想要呈
 
 
 def help_func():
+    """Return help info """
     help_info = """
     帮助信息:
         - 输入要查询的城市名称,回车确认将返回即时天气信息;
