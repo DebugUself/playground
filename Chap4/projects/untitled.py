@@ -162,9 +162,6 @@ class WeatherDatabase():
             select_result = c.fetchall()
             print(">>> 显示 SELECT 内容:", select_result)
             return select_result
-        elif 'UPDATE' in sql_commands:
-            update_result = c.fetchall()
-            print(">>> 显示 UPDATE 内容:", update_result)
         else:
             print(">>> 没有 SELECT 与 UPDATE 内容 ")
 
@@ -201,20 +198,19 @@ class WeatherDatabase():
 
         return select_result
 
-    def update_by_city(self, city, type):
+    def update_by_city(self, type, city):
         print(">>> 开始根据城市名称更新天气信息")
         variable = (type, city)
         sql_commands = self.update_rows
         self.single_operation_to_db(sql_commands, variable)
         print(">>> 完成根据城市名称更新天气信息")
 
-    def display_whole_table(self):
-        sql_commands ='SELECT * FROM city_weather_now'
+    def display_now_weather_table(self):
+        sql_commands = 'SELECT * FROM city_weather_now'
         variable = ()
         table_content = self.single_operation_to_db(sql_commands, variable)
 
         return table_content
-
 
 
 if __name__ == '__main__':
@@ -228,9 +224,11 @@ if __name__ == '__main__':
     db.creat_weather_table()
     db.insert_a_row_weather()
 
+    db.update_by_city('暴雨', '重庆')
+
+
     select_result = db.select_by_city('重庆')
     print(">>> Select 返回结果:", select_result)
 
-    db.update_by_city('暴雨', '重庆')
-    table_content = db.display_whole_table()
-    print ('>>> table_content:',table_content)
+    table_content = db.display_now_weather_table()
+    print ('>>> table_content:', table_content)
