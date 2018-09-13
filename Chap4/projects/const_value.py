@@ -28,3 +28,4 @@ DAYS = 3
 OWM_API = " https://api.openweathermap.org/data/2.5/weather"
 OWM_ID = "524901"
 OWM_APIKEY = "d966f1a05ff5652f1ee544dec9fb7bd0"
+

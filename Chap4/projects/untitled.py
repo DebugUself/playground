@@ -15,7 +15,7 @@ __license__ = 'MIT@2018-09'
 import requests
 
 from const_value import API_NOW, KEY, LANGUAGE
-
+    
 import sqlite3
 
 
@@ -148,13 +148,13 @@ class WeatherDatabase():
                             WHERE city = ?
                             '''
 
-        self.sql_delete_by_city='''
+        self.sql_delete_by_city = '''
                                 DELETE FROM city_weather_now
                                 WHERE  city= ?
                                 '''
 
     def single_operation_to_db(self, sql_commands, variable):
-        """Execute a single  opeantion to database(SQLite): add,delete,update
+        """Execute a single  opeantion to database(SQLite): add,delete,update,delete
         sql_commands : a str,a single SQL statement(without ; )
         variable: a truple,table name/ clomuns name/ a insert raw..
         """
@@ -217,10 +217,11 @@ class WeatherDatabase():
         self.single_operation_to_db(sql_commands, variable)
         print(">>> 完成根据城市名称更新天气信息")
 
-    def delete_by_city(self,city):
+    def delete_by_city(self, city):
         sql_commands = self.sql_delete_by_city
         variable = (city,)
         self.single_operation_to_db(sql_commands, variable)
+
 
 if __name__ == '__main__':
     api = SeniverseWeatherAPI("上海", "c")

@@ -477,9 +477,10 @@ Usage::
     + [X] 重构 API 2018-09-10 
         * 抽离业务逻辑
         * 将数据与操作组合成类
-    + [ ] 完成数据库的增删查改
-        + 能够存储单条信息
-        + 能够存储批量信息
+    + [ ] 完成数据库的增删查改 2018-09-12
+        + [x]能够存储单条信息
+        + [ ]能够更新单条信息
+        + [ ]能够存储批量信息
     - [ ] 将作品迁移如怼圈,以求获得及时反馈
         - [ ] 今日午饭后 1T
     + [ ] 卡片教程撰写
@@ -501,13 +502,14 @@ Usage::
         -  我自己的开发 mvp 节奏是什么? 能否以文字形式表述出来?
             +  如何设计?
             +  如何规划开发计划?
+            +  如何写设计文档?
             +  如何合理地 commit?
             +  如何处理读写 代码与文字的平衡?
-            +  最小行为循环的基本单位是什么? 
+            +  最小行为循环的基本单位是什么?
 
-- I 发现自己从重复犯错误,汇总反思
+- I 发现自己重复犯错误,汇总反思
     - - R => 推进 2018-09-06 18:29
-        + 不要去追求体系,不停止地探索中训练自己的姿势与反应,一个个知识点弄清楚,逐个攻破,从而建立起自己的体系
+        + 不要去追求体系,他人体系镜花水月,在拆解过程中提问与回答,在不断问答中训练自己的姿势与反应,把一个个知识点表述清楚,逐个攻破,从而才能建立起自己体系,实现有效复用与快速调用.
         -  text 撰写 概念卡: python import 机制 1T
             +  [The Definitive Guide to Python import Statements | Chris Yeh](https://stanford.edu/~chrisyeh/2017/08/08/definitive-guide-python-imports.html)
         -  text 撰写 技巧卡: python 项目仓库的文件结构 1T
@@ -517,6 +519,10 @@ Usage::
             +  [Testing Your Code — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
         -  text 代码规范规约
             +  [A "Best of the Best Practices" (BOBP) guide to developing in Python.](https://gist.github.com/sloria/7001839)
+        -  logging  模块的调试使用
+            +  [Stop Using "print" for Debugging: A 5 Minute Quickstart Guide to Python’s logging Module - The Invent with Python Blog](https://inventwithpython.com/blog/2012/04/06/stop-using-print-for-debugging-a-5-minute-quickstart-guide-to-pythons-logging-module/)
+            +  [Logging HOWTO — Python 3.7.0 documentation](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)
+            +  Report events that occur during normal operation of a program (e.g. for status monitoring or fault investigation)    logging.info() (or logging.debug() for very detailed output for diagnostic purposes)
     - - R => 卡顿,反思与推动
         + 过多的信息会导致行动瘫痪,番茄钟内必须给出2次自己的判断
         + 过多问题混杂也是如此
@@ -540,17 +546,20 @@ Usage::
     - 如果用语言无法表述程序的组成,原理与功能实现,那么用代码也不能.
     - 写代码也需要腹稿,想得清楚,下笔才有神.
     - 每日的计划也需要腹稿,想得清晰清楚,行动才会有力.
-    - 腹稿背后是知识树,但这太笼统了,更细一点很就是知识点一级组织形式
+    - 腹稿背后是知识树,但这太笼统了,更细一点就是 具体完备可复用知识点 + 层级组织形式
     - 代码是所有抽象关系的总和
 
-- A 计划: 1h 完成数据库的增删查改 2018-09-11 08:38
+- A 计划: 1h 完成数据库的增删查改 2018-09-11 08:38 失败
     + X 早饭,碎片,怼友激活 2018-09-11 10:15 才启动
+    + X 1h 内完成失败,整体的设计没有想清楚,相关组件的功能与用法也不熟练,导致中断
 
-- A  A 计划: 1h 完成数据库的增删查改 2018-09-11 10:16 [11:16]
+- A  A 计划: 1h 完成数据库的增删查改 2018-09-11 10:16 [O 11:16] 
     + 增加一条天气信息
+    + O 成功
 
 - Q 变量传递不清晰
     +  直接 SQl 可以运行,但是通过变量传递就出现问题
+    +   X 触发错误 -> sqlite3.OperationalError: near ".": syntax error
 
 - E sqlite3.OperationalError: near ".": syntax error
 ```
@@ -559,10 +568,232 @@ Usage::
 sqlite3.OperationalError: near ".": syntax error
 ```
     - X  INSERT INTO city_weather_now VALUES(?,?,?.?,?)
-        + `,` 不小心写作了`.` 
-    - O 修改后就成功了
+        + O `,` 不小心写作了`.` 
 
-- 
+- Q sql 与 sqlite 3 分离遇到的问题
+    - 增删查改 中的查需要调用 fetchone 的函数来传递返回值
+    - 增删改 都是 to database
+    - 而改 是 from database 
+    - 需要做一个区分 
+    - X 不必区分,重复的代码太多了,用一个if 做判断
+        -  如果 SQL 语句中存在 SELECT 那么返回 SLECT 结果 即可
+
+- X 尝试用 ? 代替 具体的 table 名时替换失败
+    ```
+           self.create_table = '''
+                                CREATE TABLE IF NOT EXISTS city_weather_now (
+                                                            date date,
+                                                            city char,
+                                                            type char,
+                                                            temp char,
+                                                            code tinyint)
+                                '''
+            def creat_weather_table(self):
+                print(">>> 开始 创建 now whearher table 创建")
+                sql_commands = self.create_table
+                variable = ()
+                print(variable)
+                self.single_operation_to_db(sql_commands, variable)
+                print(">>> 完成 当前天气信息 table 创建")
+
+
+            def single_operation_to_db(self, sql_commands, variable):
+                """Execute a single  opeantion to database(SQLite): add,delete,update
+                sql_commands : a str,a single SQL statement(without ; )
+                variable: a truple,table name/ clomuns name/ a insert raw..
+                """
+                print(">>>SQL 命令:", sql_commands)
+                conn = sqlite3.connect('weather.db')
+                c = conn.cursor()
+                c.execute(sql_commands, variable)
+
+                if 'SELECT' in sql_commands:
+                    select_result = c.fetchall()
+                    print(">>> 显示 SELECT 内容:", select_result)
+                    return select_result
+                else:
+                    print(">>> 没有 SELECT 与 UPDATE 内容 ")
+
+                conn.commit()
+                conn.close()
+                print('>>> 数据库单次操作成功!')
+    ```
+    - 当尝试使用变量 table_name 代替固定 的 table 名:city_weather_now 时失败,提示错误
+    -  E `sqlite3.OperationalError: near "?": syntax error`
+        +  X 暂时不知道原因,暂放,先完成主要功能
+
+## 完成基本功能 2018-09-12 07:00
+
+- R 一次改动不能太多,要有明确的任务目标与验证,保证程序每时每刻都在能够运行的状态 2018-09-12 06:40
+    + A 希望存储 now weather 信息的 SQL 命令能够复用,调试修改变量名,但没有成功
+    + A 希望完成 update 功能,但没有成功
+    + A 希望修改调试姿势, 都是 print 调试感觉不舒服,应该有更好的调试方式
+    - X 三个任务混杂,导致发生错误时不知定位在哪里
+
+- Q 目前只能根据城市信息来 select 信息, 如何 根据多个限制条件?
+    +  SQL: WHERE 后的 定位条件如何才能联合 ?
+
+- Q 如果获取 update 的改动信息?
+    +  X 尝试使用 cursor.fetchone() 没有任何返回信息
+    +  I 或许可以 通过 commit 信息来调用? [w]
+
+- A 显示 table 内所有内容
+    + `def display_now_weather_table(self):`
+    + `sql_commands ='SELECT * FROM city_weather_now'`
+    + O 成功运行
+
+- A 实现 database 的 UPDATE 功能
+    + 根据城市信息 update 数据库中 相关的天气信息
+    + A 尝试将重庆的信息变为暴雨
+    + X city , type 的变量顺序相反
+    + O 调整后就成功了
+
+- A 实现 database 的 delete 功能
+    + 根据城市信息 delete 相关天气信息
+    +  A 尝试删除重庆信息
+
+- A 尽快将项目迁移到怼圈分支,以寻求反馈
+
+- I 似乎有点找到状态,意识的 MVP 集中
+    + 混乱的意识和水流一样,没有固定的倾向就只能四处散落,没有力量
+    + 意识的投入数量靠时间投入来衡量
+    + 意识的投入质量只能通过预定任务的完成与代码是否成功来判定
+    + 任务的规划与写函数类似:确定任务目标,确认返回结果,启动运行直到成功
+        * 限定时间(1T)内未成功,重新描述问题,重新回顾探索路径,调整方向
+        * 止损时间(2T)内未成功,已尝试2~3个方案,提问
+            - 怼圈
+            - Stack Overflow
+    + 能做到这个前提是对自己情绪与思绪有平静的把握
+        * 完备的规划
+        * 明确的执行
+        * 清晰的判定
+        * 快速的反应
+        * 无噪的内心
+
+- Q 如何将项目迁移到怼圈
+    + 建立孤子分支
+    + 建立远程分支链接
+
+- A 在 playground 中尝试链接
+    + A 建立一个孤子分支
+        * D 打断 查收 slack 信息
+        * X ssh方式  git clone 失败,换成 HTTPS 方式成功
+        * O 设置成功
+        ```shell 
+        ➜  du4proto.wiki git:(master) git clone https://github.com/DebugUself/playground.git
+        Cloning into 'playground'...
+        remote: Counting objects: 706, done.
+        remote: Compressing objects: 100% (3/3), done.
+        remote: Total 706 (delta 0), reused 0 (delta 0), pack-reused 703
+        Receiving objects: 100% (706/706), 1.67 MiB | 162.00 KiB/s, done.
+        Resolving deltas: 100% (234/234), done.
+        Checking connectivity... done.
+
+        ➜  du4proto.wiki git:(master) ✗ git checkout --orphan NBRpy104
+        Switched to a new branch 'NBRpy104'
+
+        ➜  du4proto.wiki git:(NBRpy104) ✗ git rm -rf .
+        rm '180530DUmeetingSH.md'
+        ...
+
+        ➜  du4proto.wiki git:(NBRpy104) ✗ echo "#Title of Readme" > README.md
+        ➜  du4proto.wiki git:(NBRpy104) ✗ git add README.md
+        ➜  du4proto.wiki git:(NBRpy104) ✗ git commit -a -m "Initial Commit"
+        [NBRpy104 (root-commit) 40c8b2c] Initial Commit
+         1 file changed, 1 insertion(+)
+         create mode 100644 README.md
+
+        ➜  du4proto.wiki git:(NBRpy104) ✗ git push --set-upstream origin NBRpy104
+        Counting objects: 3, done.
+        Writing objects: 100% (3/3), 230 bytes | 0 bytes/s, done.
+        Total 3 (delta 0), reused 0 (delta 0)
+        To https://github.com/DebugUself/du4proto.wiki.git
+         * [new branch]      NBRpy104 -> NBRpy104
+        Branch NBRpy104 set up to track remote branch NBRpy104 from origin.
+        ```
+
+- X ⚠️  忘记注意地址... 建立了 wiki 仓库的分支... ⚠️
+    +  A 删除远程 wiki 分支,并删除本地分支
+        * [How do I delete a Git branch both locally and remotely? - Stack Overflow](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely)
+        *  删除远程分支 `git push --delete origin NBRpy104`
+        *  删除本地分支 `git branch -D NBRpy104`
+        ```shell
+        ➜  du4proto.wiki git:(NBRpy104) ✗ git checkout master
+        Switched to branch 'master'
+        Your branch is up-to-date with 'origin/master'.
+        ➜  du4proto.wiki git:(master) ✗ git branch -a
+          NBRpy104
+        * master
+          remotes/origin/HEAD -> origin/master
+          remotes/origin/NBRpy104
+          remotes/origin/master
+        ➜  du4proto.wiki git:(master) ✗ git push --delete origin NBRpy104
+        To https://github.com/DebugUself/du4proto.wiki.git
+         - [deleted]         NBRpy104
+
+        ➜  du4proto.wiki git:(master) ✗ git branch -D NBRpy104
+        Deleted branch NBRpy104 (was 40c8b2c).
+
+        ➜  du4proto.wiki git:(master) ✗ git branch -a
+        * master
+          remotes/origin/HEAD -> origin/master
+          remotes/origin/master
+        ```
+        - O 成功消除错误影响
+
+- A 在 playground 测试: 将本地 py104 仓库关联到 playground 仓库的 NBRpy104 分支上 
+
+    + A 将本地的py104仓库 master 分支 关联到 NBRpy104 远程分支上
+        * [Git - Working with Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+    + X 直接关联失败
+    + E  error: src refspec NBRpy1040 does not match any.
+    ```
+    ➜  Py101-004 git:(master) ✗ git remote add -t NBRpy104 -f play  https://github.com/DebugUself/playground.git
+    Updating play
+    warning: no common commits
+    remote: Counting objects: 3, done.
+    remote: Total 3 (delta 0), reused 1 (delta 0), pack-reused 2
+    Unpacking objects: 100% (3/3), done.
+    From https://github.com/DebugUself/playground
+     * [new branch]      NBRpy104   -> play/NBRpy104
+    ➜  Py101-004 git:(master) ✗ git push --set-upstream play  NBRpy1040
+    error: src refspec NBRpy1040 does not match any.
+    error: failed to push some refs to 'https://github.com/DebugUself/playground.git'
+    ```
+    + I 判断: 没有任何可以一致匹配的内容导致更新失败
+        * O 时间线上的 commit 以及 仓库内容的冲突导致无法合并
+        * A 选择
+            * 00 将 Py104-004 的全部内容复制到分支目录下, 另启一个分支,丢失原本的 commit 历史记录
+            * 01 由于是重构,直接将新的代码文件复制出来,另启一个分支,丢失原本的commit,丢失原本 Chap 4 之前的代码内容.
+            * 02 创建软链接,将新代码的文件关联到 怼圈远程分支, 不过小步修改实现后需要 2 次 commit,原 py104 仓库的 commit 历史不会中断,新的分支丢失 commit 记录.
+        * O 选择 方案 02 -> 失败
+        * E 不知是否还有更好的关联方式,发怼圈 issue 求助
+
+- Q 如何创建软链接? 
+    + REF [How to Create and Use Symbolic Links (aka Symlinks) on a Mac](https://www.howtogeek.com/297721/how-to-create-and-use-symbolic-links-aka-symlinks-on-a-mac/)
+        - `ln -s /path/to/original /path/to/link`
+
+* A 尝试 方案2 失败
+    - 当前路径: /Users/NBR-hugh/Documents/github.nibirong.com/Py101-004/Chap4/projects
+    - 目标路径: /Users/NBR-hugh/Documents/github.nibirong.com/playground/ projects
+    - X 不行,软链接知识建立一个关联,没有具体文件可以
+    - A 看来得用硬链接
+        + `man ln`
+            * > By default, ln makes hard links.
+        + X 报错
+        + REF : [硬链接(hard link)和符号连接(symbolic link)的区别-每天进步一点点……-51CTO博客](http://blog.51cto.com/wzgl08/308987)
+            * > 硬链接文件有两个限制
+                1）、不允许给目录创建硬链接
+                2）、只允许在同一文件系统中的文件之间才能创建链接
+- X 方案 02 失败
+    + ln 是无实体关联链接,无法同步具体内容
+    + 如何实现不同文件系统中的具体内容的拷贝?
+
+
+Q 命令行的文字编辑技巧
+    - 如何实现光标的快速跳转?
+        + [Mac下iTerm2光标按照单词快速移动设置 - CSDN博客](https://blog.csdn.net/skyyws/article/details/78480132)
+        + [iTerm2 快捷键大全 - 陈斌彬的技术博客](https://cnbin.github.io/blog/2015/06/20/iterm2-kuai-jie-jian-da-quan/)
 
 ##  TL
 
