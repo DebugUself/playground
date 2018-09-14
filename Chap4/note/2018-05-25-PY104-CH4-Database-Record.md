@@ -788,12 +788,113 @@ sqlite3.OperationalError: near ".": syntax error
 - X 方案 02 失败
     + ln 是无实体关联链接,无法同步具体内容
     + 如何实现不同文件系统中的具体内容的拷贝?
+        * S  auto related copy file mac
+        * [automator - Is there a way for OSX to auto-copy a file somewhere whenever it's updated? - Ask Different](https://apple.stackexchange.com/questions/182716/is-there-a-way-for-osx-to-auto-copy-a-file-somewhere-whenever-its-updated)
+        * [How to Schedule an Automatic File Backup in a Mac: 11 Steps](https://www.wikihow.com/Schedule-an-Automatic-File-Backup-in-a-Mac)
+        * [Auto copy for files from folder to folder upon instant writing | Unix Linux Forums | UNIX for Advanced & Expert Users](https://www.unix.com/unix-for-advanced-and-expert-users/61278-auto-copy-files-folder-folder-upon-instant-writing.html)
+        * [Automatically copying files from one fold… - Apple Community](https://discussions.apple.com/thread/2246916)
+
+- I 发布 怼圈 Issue 求助
+    + -> [3d\[ASK\] 如何将开发了一半的项目迁入怼圈孤子分支? · Issue #470 · DebugUself/du4proto](https://github.com/DebugUself/du4proto/issues/470#issuecomment-420907166)
+
+- I  [目标定义不清晰](https://github.com/DebugUself/du4proto/issues/470#issuecomment-420907166)
+    + A 分析对应效果与行为
+    + I 基本组成: 
+        + [本地/远程] py104 仓库 master 分支 [仓库所有文件/部分代码文件]
+        + [本地/远程] playground 仓库 NBRpy104 分支 
+    + I 主要决策点
+        * 内容: 迁移 整个 py104 仓库 master 分支内所有文件,还是只迁移 正在重构中的代码与记录
+        * 内容: 迁移后  原本仓库的 commit 历史是否能够完整保留
+        * 形式: 唯一实体原则, 希望一处改动,多处自动/半自动变动
+        * 成本: 由于往后需要多次提交,所以需要尽可能少的操作,降低行动成本
+        * 先形式,后内容,
+    + I 原先的行动序列
+        ```
+        0 [local py104 master] => [remote py104 master]
+
+        [local py104 master]:make the change ->  git add  ->  git commit -> git push -> [remote py104 master]:update the change
+        ```
+
+    + 逻辑分析
+        * 一处实体改动,多处 本地/远程备份自动更新
+        * 1 一处文件实体, 经过 X 操作, 自动/半自动完成 多仓库提交 失败
+        ```
+        1 [local py104 master]  => [remote playground NBRpy104] 
+                                => [remote py104 master]
+
+        具体命令:
+        [local py104 master]:make the change -> git add  ->  git commit +
+                                                                        |
+        + <------------------------------------------------------------ +
+        +-> git push => [remote py104 master]:update the change
+        +-> git push --set-upstream play NBRpy104  => [remote playground  NBRpy104]:update the change
+        ```
+        * 2 一处文件实体, 经过 X 操作, 自动变成多个实体, 再对应不同的仓库, 自动/半自动完成 提交
+            - 2.1 尝试软链接,对软链接定义不明而失败, ln 不产生实体
+            - 2.2 搜索了一下,指向 mac 自带的工具 automator 
+                - [欢迎使用 Automator - Apple 支持](https://support.apple.com/zh-cn/guide/automator/welcome/mac)
+        ```
+        2 [local py104 master] =>  [remote py104 master]
+            | (auto copy way)
+            + => [local playground NBRpy104] => [remote playground NBRpy104]
+
+        具体命令:
+        [local py104 master]:make the change -> git add  ->  git commit -> git push => [remote py104 master]:update the change
+        |
+        +(auto copy way) 
+        |
+        + => [local playground NBRpy104]: update the change -> git add  ->  git commit -> git push => [remote playground NBRpy104]:update the change
+        ```
+
+- 接下来的行动
+    + 1 可能存在直接关联的方式,但由于我对 git 的理解实现,目前无法实现,
+        * 对于 match 的判定其实存在疑虑:
+            - 如果同时判定commmit 信息与具体内容,那么该方法基本不可能了
+            - 但如果只是判定具体内容,那么将文件复制过去后,丢失之前的 commit, 但可以实现今后的 commit 的同步
+    + 2 探索  automator 自动拷贝
+    + 3 重复的 push/commit 的操作 看能否通过 shell 命令 或者 zsh 的 alias 功能 简化
+    + 4 如果都不行,那就直接复制到孤子分支上了事,只是这样会造成 commit 历史的割裂
+
+- I 求助反馈
+    - REF 
+        - [3d\[ASK\] 如何将开发了一半的项目迁入怼圈孤子分支? · Issue #470 · DebugUself/du4proto](https://github.com/DebugUself/du4proto/issues/470#issuecomment-420990946)
+        - [du4proto/20170828\_two\_unrelated\_repo\_in\_one\_gitfolder.md at YHarticles · DebugUself/du4proto](https://github.com/DebugUself/du4proto/blob/YHarticles/20170828_two_unrelated_repo_in_one_gitfolder.md)
+
+    + I 00 `--allow-unrelated-histories` 
+        + git push [远程库名][本地分支名]:[远程分支名]
+            ```
+            λ git clone du4proto url
+            λ cd du4proto
+            λ git checkout -orphan yanhui
+            (delect files)
+            λ git remote add yhpy103 url
+            λ git fetch yhpy103
+            λ git merge yhpy103/master --allow-unrelated-histories
+            (modify some files, eg. README.md)
+            λ git add .
+            λ git commit
+            λ git push origin yanhui:yanhui
+            ```
+    + I 01  官方文档 => git 本身有另外的多仓库管理策略/工具/技巧
+    + I 02  通用性自动化工具, python 实现的 Fabric 
+    + I 03   `.git` 文件 (hooks)
+    + I 04  1.* 比较容易上手,即尝试直接关联,而非自动复制实体
+
+- A 尝试 leilayanhui  的方案
+    -  X 只能推送同一分支:  py104:master -> playground:master
+    -  X  fetch + merge,其实还是有两个实体了
+    -  git push --set-upstream play  NBRpy1040 --allow-unrelated-histories
 
 
 Q 命令行的文字编辑技巧
+
     - 如何实现光标的快速跳转?
         + [Mac下iTerm2光标按照单词快速移动设置 - CSDN博客](https://blog.csdn.net/skyyws/article/details/78480132)
         + [iTerm2 快捷键大全 - 陈斌彬的技术博客](https://cnbin.github.io/blog/2015/06/20/iterm2-kuai-jie-jian-da-quan/)
+        + O 通过修改 映射,实现 alt + 左右方向键,实现光标 word 间跳转
+
+
+
 
 ##  TL
 
