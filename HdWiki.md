@@ -1,4 +1,7 @@
 # 利用wiki搜索一个领域
+
+[Home](Home)
+
 从以前的搜索经验，维基提供了进入一个领域的多个维度，比如
 - [Help:Menu/Navigating Wikipedia - Wikipedia](https://en.wikipedia.org/wiki/Help:Menu/Navigating_Wikipedia)
 
